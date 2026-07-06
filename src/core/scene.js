@@ -111,6 +111,7 @@ export function createScene(canvas) {
     hemi.color.set(theme.hemiSky);
     hemi.groundColor.set(theme.hemiGround);
     glow.material.color.set(theme.glow);
+    sun.intensity = theme.sun ?? 1.35; // splash dims the sun for drama
   }
 
   return {

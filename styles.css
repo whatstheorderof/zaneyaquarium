@@ -85,21 +85,24 @@ html, body {
 .btn:disabled { opacity: 0.45; cursor: default; filter: grayscale(0.4); }
 
 /* ---------- splash menu (over the live 3D scene) ---------- */
+/* Layout mirrors the reference: copy on the left, glowing aquarium right. */
 .screen.splash {
-  background: radial-gradient(ellipse at 50% 38%,
-    rgba(10, 16, 34, 0) 30%, rgba(10, 16, 34, 0.42) 100%);
+  background: radial-gradient(ellipse at 68% 40%,
+    rgba(3, 7, 14, 0) 22%, rgba(3, 7, 14, 0.55) 100%);
   pointer-events: none;
   justify-content: flex-start;
-  padding-top: 8vh;
+  align-items: flex-start;
+  padding-top: 14vh;
+  padding-left: 7vw;
 }
 .screen.splash button { pointer-events: auto; }
 
-/* Animated twilight water gradient behind the splash scene. */
+/* Deep, slowly drifting dark-water gradient behind the splash scene. */
 #app.splash-bg {
-  background: linear-gradient(200deg,
-    #23315e 0%, #1a5f6e 30%, #232a52 55%, #45356e 80%, #16203c 100%) !important;
-  background-size: 300% 300% !important;
-  animation: splash-drift 18s ease-in-out infinite;
+  background: linear-gradient(155deg,
+    #04070d 0%, #071527 38%, #0a2334 62%, #051019 85%, #02050a 100%) !important;
+  background-size: 260% 260% !important;
+  animation: splash-drift 22s ease-in-out infinite;
 }
 @keyframes splash-drift {
   0%, 100% { background-position: 0% 0%; }
@@ -107,15 +110,15 @@ html, body {
 }
 
 .splash-inner {
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: flex-start;
   gap: 14px;
-  text-align: center;
+  text-align: left;
   animation: splash-in 0.9s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 @keyframes splash-in { from { opacity: 0; transform: translateY(18px); } }
 
 .logo-svg {
-  width: min(520px, 86vw);
+  width: min(440px, 84vw);
   height: auto;
   filter: drop-shadow(0 4px 0 rgba(10, 16, 34, 0.35)) drop-shadow(0 0 26px rgba(126, 220, 220, 0.4));
   animation: logo-float 4.5s ease-in-out infinite;
@@ -146,7 +149,20 @@ html, body {
 .splash-tagline { color: #aef0ea; text-shadow: 0 2px 12px rgba(10, 16, 34, 0.6); }
 .splash-ghost { background: rgba(255, 255, 255, 0.18); color: #eaf6ff; backdrop-filter: blur(6px); }
 .credit { position: absolute; bottom: 18px; color: var(--ink-soft); font-size: 0.8rem; opacity: 0.75; }
-.splash-credit { color: #bcd2e8; }
+.splash-credit { color: #7f95b5; left: 7vw; }
+
+/* On narrow screens the cube sits behind the copy — centre everything. */
+@media (max-width: 720px) {
+  .screen.splash {
+    align-items: center;
+    padding-left: 16px;
+    padding-top: 9vh;
+    background: radial-gradient(ellipse at 50% 45%,
+      rgba(3, 7, 14, 0) 20%, rgba(3, 7, 14, 0.6) 100%);
+  }
+  .splash-inner { align-items: center; text-align: center; }
+  .splash-credit { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+}
 
 /* ---------- level select ---------- */
 .map-header {

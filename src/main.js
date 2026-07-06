@@ -3,8 +3,9 @@ import { createScene } from "./core/scene.js";
 import { createInput } from "./core/input.js";
 import { updateTweens } from "./core/tween.js";
 import { Board } from "./game/board.js";
-import { applyTheme, buildFish } from "./game/tileFactory.js";
+import { applyTheme } from "./game/tileFactory.js";
 import { key, reachableFrom } from "./game/rules.js";
+import { buildSplash } from "./core/splash.js";
 import { FishController } from "./game/fish.js";
 import { AudioEngine } from "./audio/ambient.js";
 import { UI } from "./ui/ui.js";
@@ -22,28 +23,16 @@ function saveProgress(p) {
   try { localStorage.setItem(SAVE_KEY, JSON.stringify(p)); } catch (_) {}
 }
 
-// ------------------------------------------------------------ splash diorama
-// A little decorative island shown behind the main menu — pure eye candy,
-// rendered by the game engine itself (water ring, portal, corals, fish).
-const MENU_SCENE = {
-  id: -1, name: "menu", world: 3, size: [5, 4], par: 0,
-  tiles: [
-    { x: 1, z: 1, conn: "ES" }, { x: 2, z: 1, conn: "EW" }, { x: 3, z: 1, conn: "SW" },
-    { x: 3, z: 2, conn: "NW" }, { x: 2, z: 2, conn: "EW" }, { x: 1, z: 2, conn: "NE" },
-    { x: 2, z: 0, conn: "S", portal: true },
-    { x: 0, z: 0, decor: "tower" }, { x: 4, z: 0, decor: "arch" },
-    { x: 0, z: 1, decor: "plant" }, { x: 4, z: 1, decor: "tower" },
-    { x: 0, z: 2, decor: "coral" }, { x: 4, z: 2, decor: "plant" },
-    { x: 0, z: 3, decor: "shell" }, { x: 2, z: 3, decor: "coral" },
-    { x: 4, z: 3, decor: "rock" },
-  ],
-  fish: [],
+// ------------------------------------------------------------ splash theme
+// The menu is a cinematic set piece: a glowing aquarium cube in the dark
+// with god rays and a school of fish (see src/core/splash.js).
+const SPLASH_THEME = {
+  fog: "#0a1322",
+  hemiSky: "#44598a",
+  hemiGround: "#0a1322",
+  glow: "#2e6f80",
+  sun: 0.35, // dim the sun so the light shafts carry the scene
 };
-const MENU_FISH = [
-  { color: 0xff9f43, r: 1.12, speed: 0.55, phase: 0 },
-  { color: 0xf78fb3, r: 1.18, speed: -0.42, phase: 2.2 },
-  { color: 0x8ac6ff, r: 0.75, speed: 0.7, phase: 4.1 },
-];
 
 // ------------------------------------------------------------ bootstrap
 async function boot() {
@@ -68,7 +57,7 @@ async function boot() {
     powers: { coral: 1, bubble: 1, push: 1 },
     activePower: null,
   };
-  let menuFish = [];
+  let splash = null;
 
   const board = new Board(view.boardGroup, {
     onMove: () => {
@@ -216,17 +205,13 @@ async function boot() {
   function showMenu() {
     state.screen = "menu";
     ui.showMenu();
-    // Live splash: twilight theme + decorative island with circling fish.
-    applyWorldTheme(MENU_SCENE);
+    // Cinematic splash: dark water, glowing aquarium cube, god rays, fish.
+    view.setTheme(SPLASH_THEME);
     document.getElementById("app").classList.add("splash-bg");
     fish.dispose();
-    board.load(MENU_SCENE);
-    view.frame(MENU_SCENE.size[0], MENU_SCENE.size[1]);
-    menuFish = MENU_FISH.map((cfg) => {
-      const mesh = buildFish(cfg.color);
-      board.group.add(mesh);
-      return { mesh, ...cfg };
-    });
+    board.dispose();
+    if (!splash) splash = buildSplash(view.boardGroup);
+    view.frame(5, 4);
   }
   function showMap() {
     state.screen = "map";
@@ -245,7 +230,7 @@ async function boot() {
     if (!level) return;
     applyWorldTheme(level);
     document.getElementById("app").classList.remove("splash-bg");
-    menuFish = [];
+    if (splash) { splash.dispose(); splash = null; }
     state.screen = "game";
     state.level = level;
     state.moves = 0;
@@ -304,7 +289,6 @@ async function boot() {
 
   // --------- main loop ---------
   let last = performance.now();
-  let menuTime = 0;
   function tick(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
@@ -313,23 +297,7 @@ async function boot() {
       board.update(dt);
       fish.update(dt);
     }
-    if (state.screen === "menu" && menuFish.length) {
-      // Fish lazily circling the splash island.
-      menuTime += dt;
-      for (const f of menuFish) {
-        const a = menuTime * f.speed + f.phase;
-        const cx = 2, cz = 1.5;
-        f.mesh.position.set(
-          cx + Math.cos(a) * f.r,
-          0.66 + Math.sin(menuTime * 1.6 + f.phase) * 0.06,
-          cz + Math.sin(a) * f.r
-        );
-        const dir = Math.sign(f.speed);
-        f.mesh.rotation.y = Math.atan2(-Math.cos(a) * dir, -Math.sin(a) * dir);
-        const tail = f.mesh.userData.tail;
-        if (tail) tail.rotation.y = Math.sin(menuTime * 8 + f.phase) * 0.5;
-      }
-    }
+    if (state.screen === "menu" && splash) splash.update(dt);
     view.update(dt);
     view.render();
     requestAnimationFrame(tick);
