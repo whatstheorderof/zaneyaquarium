@@ -95,7 +95,7 @@ html, body {
   padding-top: 14vh;
   padding-left: 7vw;
 }
-.screen.splash button { pointer-events: auto; }
+.screen.splash button, .screen.splash a { pointer-events: auto; }
 
 /* Deep, slowly drifting dark-water gradient behind the splash scene. */
 #app.splash-bg {
@@ -147,6 +147,17 @@ html, body {
   font-size: 0.85rem;
 }
 .splash-tagline { color: #aef0ea; text-shadow: 0 2px 12px rgba(10, 16, 34, 0.6); }
+.studio-credit {
+  margin-top: 10px;
+  color: #7f95b5;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.studio-credit b { color: #aef0ea; font-weight: 700; }
+.studio-credit:hover, .studio-credit:hover b { color: #ffffff; }
 .splash-ghost { background: rgba(255, 255, 255, 0.18); color: #eaf6ff; backdrop-filter: blur(6px); }
 .credit { position: absolute; bottom: 18px; color: var(--ink-soft); font-size: 0.8rem; opacity: 0.75; }
 .splash-credit { color: #7f95b5; left: 7vw; }

@@ -28,10 +28,10 @@ function saveProgress(p) {
 // with god rays and a school of fish (see src/core/splash.js).
 const SPLASH_THEME = {
   fog: "#0a1322",
-  hemiSky: "#44598a",
-  hemiGround: "#0a1322",
+  hemiSky: "#5a6f9e",
+  hemiGround: "#0e1830",
   glow: "#2e6f80",
-  sun: 0.35, // dim the sun so the light shafts carry the scene
+  sun: 0.3, // dim the sun so the light shafts carry the scene
 };
 
 // ------------------------------------------------------------ bootstrap
