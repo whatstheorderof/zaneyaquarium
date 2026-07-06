@@ -43,6 +43,23 @@ export class FishController {
     return this.fishes.length > 0 && this.fishes.every((f) => f.state === "home");
   }
 
+  /** The idle fish sitting on a given cell, if any. */
+  idleFishAt(k) {
+    return this.fishes.find((f) => f.state === "idle" && f.key === k) || null;
+  }
+
+  /** Current Push: swim a fish along a partial path (no portal at the end). */
+  pushAlong(fish, path) {
+    if (fish.state !== "idle" || !path || path.length < 2) return false;
+    fish.state = "swim";
+    fish.partial = true;
+    fish.path = path;
+    fish.seg = 0;
+    fish.segT = 0;
+    this.cb.onSound?.("swim");
+    return true;
+  }
+
   /** Called after every completed move: start any fish that now has a path. */
   tryStart() {
     for (const f of this.fishes) {
@@ -82,7 +99,15 @@ export class FishController {
         f.key = f.path[f.seg];
         if (this.board.collectStar(f.key)) this.cb.onStar?.(f.key);
         if (f.seg >= f.path.length - 1) {
-          this._arrive(f);
+          if (f.partial) {
+            // Pushed by a current — rest here, ready to swim on.
+            f.partial = false;
+            f.state = "idle";
+            f.path = null;
+            this.tryStart();
+          } else {
+            this._arrive(f);
+          }
           continue;
         }
       }

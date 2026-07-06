@@ -31,8 +31,14 @@ export function createInput(canvas, camera, getPickables, onPick) {
 
     // Walk up to the tile root group.
     let obj = hits[0].object;
-    while (obj && !obj.userData?.tile) obj = obj.parent;
-    if (obj?.userData?.tile) onPick(obj.userData.tile);
+    while (obj && !obj.userData?.tile && !obj.userData?.ground) obj = obj.parent;
+    if (obj?.userData?.tile) {
+      onPick({ tile: obj.userData.tile });
+    } else if (obj?.userData?.ground) {
+      // Empty-cell tap (used by power-ups): snap the hit point to the grid.
+      const p = hits[0].point;
+      onPick({ cell: { x: Math.round(p.x), z: Math.round(p.z) } });
+    }
   }
 
   canvas.addEventListener("pointerdown", onPointerDown);

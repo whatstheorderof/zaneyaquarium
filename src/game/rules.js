@@ -85,6 +85,29 @@ export function findPath(cells, startKey, goalKey) {
   return null;
 }
 
+/**
+ * All cells reachable from startKey through connected water.
+ * Returns Map<key, prevKey> (BFS tree, startKey → null).
+ */
+export function reachableFrom(cells, startKey) {
+  const prev = new Map([[startKey, null]]);
+  const queue = [startKey];
+  while (queue.length) {
+    const k = queue.shift();
+    const tile = cells.get(k);
+    if (!tile) continue;
+    for (let d = 0; d < 4; d++) {
+      const nk = key(tile.x + DIR_VEC[d].dx, tile.z + DIR_VEC[d].dz);
+      if (prev.has(nk)) continue;
+      const nb = cells.get(nk);
+      if (!nb || !connected(tile, nb, d)) continue;
+      prev.set(nk, k);
+      queue.push(nk);
+    }
+  }
+  return prev;
+}
+
 /** Build logical tile records from raw level JSON (no meshes). */
 export function buildLogicalTiles(levelData) {
   const cells = new Map();

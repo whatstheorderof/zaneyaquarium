@@ -5,7 +5,8 @@ import {
   key, DIR_VEC, buildLogicalTiles, findPath,
 } from "./rules.js";
 import {
-  buildTileGroup, buildDecorGroup, LEVEL_H, waterY,
+  buildTileGroup, buildDecorGroup, buildCoralBridge, buildGroundPlane,
+  LEVEL_H, waterY,
 } from "./tileFactory.js";
 
 export class Board {
@@ -32,6 +33,11 @@ export class Board {
     const { cells, portalKey } = buildLogicalTiles(levelData);
     this.cells = cells;
     this.portalKey = portalKey;
+    this.decorCells = new Set();
+
+    // Invisible plane so empty-cell taps (power-ups) can be located.
+    this.ground = buildGroundPlane(levelData.size[0], levelData.size[1]);
+    this.group.add(this.ground);
 
     let i = 0;
     for (const t of levelData.tiles) {
@@ -39,6 +45,7 @@ export class Board {
         const dg = buildDecorGroup(t, i);
         dg.position.set(t.x, 0, t.z);
         this.group.add(dg);
+        this.decorCells.add(key(t.x, t.z));
         i++;
         continue;
       }
@@ -76,6 +83,7 @@ export class Board {
   get pickables() {
     const list = [];
     for (const t of this.cells.values()) if (t.group) list.push(t.group);
+    if (this.ground) list.push(this.ground);
     return list;
   }
 
@@ -201,6 +209,54 @@ export class Board {
     const rec = { kind: "lift", tile };
     if (record) this.undoStack.push(rec);
     return rec;
+  }
+
+  // ---------------------------------------------------------- power-ups
+  /** Coral Boost: grow a water bridge (open all sides) on an empty cell. */
+  addCoralBridge(x, z) {
+    const k = key(x, z);
+    if (this.cells.has(k) || this.decorCells.has(k)) return false;
+    if (x < 0 || z < 0 || x >= this.level.size[0] || z >= this.level.size[1]) return false;
+
+    const tile = {
+      x, z, h: 0,
+      baseConn: 15, rot: 0, rotatable: false,
+      ramp: null, lift: null, li: 0, slide: null, slideDir: 1,
+      portal: false, spawn: false, star: false, starCollected: false,
+      coral: true,
+    };
+    const g = buildCoralBridge(tile);
+    g.position.set(x, 0, z);
+    tile.group = g;
+    this.group.add(g);
+    this.cells.set(k, tile);
+
+    // Pop-in animation.
+    g.scale.setScalar(0.01);
+    this.busy++;
+    this.cb.onSound?.("star");
+    tween({
+      dur: 0.45, ease: Ease.outBack,
+      onUpdate: (kk) => g.scale.setScalar(0.01 + kk * 0.99),
+      onDone: () => { this.busy--; this.cb.onMove?.(); },
+    });
+    return true;
+  }
+
+  /** Bubble Lift: raise a normal tile one level. */
+  bubbleLift(tile) {
+    if (tile.lift || tile.ramp || tile.portal) return false;
+    tile.h += 1;
+    const g = tile.group;
+    const fromY = g.position.y;
+    this.busy++;
+    this.cb.onSound?.("lift");
+    tween({
+      dur: 0.55, ease: Ease.outBack,
+      onUpdate: (k) => { g.position.y = fromY + LEVEL_H * k; },
+      onDone: () => { this.busy--; this.cb.onMove?.(); },
+    });
+    return true;
   }
 
   _wobble(tile) {

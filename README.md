@@ -48,6 +48,14 @@ Then import the repo at [vercel.com/new](https://vercel.com/new) (Framework pres
 
 **HUD:** ⟳ restart · ↩ undo · 💡 hint (placeholder) · 🔊 sound
 
+**Power-ups** (one of each per level, bottom-left):
+
+- 🪸 **Coral Boost** — grow a water bridge on any empty cell (open on all four sides)
+- 🫧 **Bubble Lift** — raise any tile one level
+- 🌊 **Current Push** — push a fish forward along connected water toward the portal
+
+Tap the power-up, then tap the target on the board. Restarting the level restores them.
+
 Progress (unlocked levels, best stars, sound preference) is saved in `localStorage`.
 
 ## Project structure

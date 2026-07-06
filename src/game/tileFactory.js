@@ -446,6 +446,57 @@ function buildProp(kind, seed) {
   return g;
 }
 
+// ------------------------------------------------------------- power-ups
+/** Coral Boost: a living coral bridge with water flowing every direction. */
+export function buildCoralBridge(tile) {
+  const g = new THREE.Group();
+  g.userData.tile = tile;
+
+  const baseH = BASE_H * 0.9;
+  const base = new THREE.Mesh(
+    new THREE.BoxGeometry(TILE * 0.94, baseH, TILE * 0.94),
+    new THREE.MeshStandardMaterial({ color: 0xf3a8c0, roughness: 0.75 })
+  );
+  base.position.y = baseH / 2;
+  base.castShadow = base.receiveShadow = true;
+  g.add(base);
+
+  const spinner = new THREE.Group();
+  spinner.position.y = baseH;
+  g.add(spinner);
+  g.userData.spinner = spinner;
+  buildChannels(spinner, 15); // open on all four sides
+
+  // Coral growths on the corners.
+  for (let i = 0; i < 4; i++) {
+    const m = new THREE.MeshStandardMaterial({
+      color: PALETTE.coral[i % PALETTE.coral.length],
+      emissive: PALETTE.coral[i % PALETTE.coral.length],
+      emissiveIntensity: 0.18,
+      roughness: 0.6,
+    });
+    const branch = new THREE.Mesh(new THREE.ConeGeometry(0.055, 0.3 + (i % 2) * 0.1, 6), m);
+    const a = (i / 4) * Math.PI * 2 + 0.4;
+    branch.position.set(Math.cos(a) * 0.34, baseH + 0.12, Math.sin(a) * 0.34);
+    branch.rotation.z = Math.cos(a) * 0.3;
+    branch.castShadow = true;
+    g.add(branch);
+  }
+  return g;
+}
+
+/** Invisible ground plane so taps on empty cells can be located. */
+export function buildGroundPlane(w, h) {
+  const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(w + 1.5, h + 1.5),
+    new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false })
+  );
+  plane.rotation.x = -Math.PI / 2;
+  plane.position.set((w - 1) / 2, 0.01, (h - 1) / 2);
+  plane.userData.ground = true;
+  return plane;
+}
+
 // ------------------------------------------------------------- fish
 export function buildFish(colorHex = 0xff9f43) {
   const g = new THREE.Group();

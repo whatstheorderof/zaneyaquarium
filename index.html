@@ -19,29 +19,22 @@
   <div id="app">
     <canvas id="game-canvas"></canvas>
 
-    <!-- ============ MAIN MENU ============ -->
-    <section id="screen-menu" class="screen visible">
-      <div class="menu-card">
-        <div class="hero-fish" aria-hidden="true">
-          <svg viewBox="0 0 120 80" width="150" height="100">
-            <g class="fish-swim">
-              <ellipse cx="55" cy="40" rx="28" ry="18" fill="#ffab4a"/>
-              <path d="M80 40 L104 24 L98 40 L104 56 Z" fill="#ff8fa3"/>
-              <ellipse cx="44" cy="34" rx="4.5" ry="5" fill="#2b3a55"/>
-              <circle cx="42.5" cy="32.5" r="1.6" fill="#fff"/>
-              <path d="M50 52 Q56 58 64 52" stroke="#e88a2f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            </g>
-            <circle class="bub b1" cx="18" cy="30" r="4" fill="#aee6f2"/>
-            <circle class="bub b2" cx="26" cy="52" r="2.6" fill="#aee6f2"/>
-            <circle class="bub b3" cx="12" cy="46" r="2" fill="#cdeef7"/>
-          </svg>
-        </div>
-        <h1 class="logo">Zaney<br/><span>Aquarium</span></h1>
-        <p class="tagline">Guide the fish home</p>
+    <!-- ============ SPLASH / MAIN MENU (renders over the live 3D scene) ============ -->
+    <section id="screen-menu" class="screen splash visible">
+      <div class="splash-inner">
+        <svg class="logo-svg" viewBox="0 0 640 250" role="img" aria-label="Zaney Aquarium">
+          <g class="logo-line1">
+            <text x="320" y="100" text-anchor="middle" rotate="-5 4 -3 6 -4">ZANEY</text>
+          </g>
+          <g class="logo-line2">
+            <text x="320" y="205" text-anchor="middle" rotate="4 -5 3 -3 5 -4 3 -5">AQUARIUM</text>
+          </g>
+        </svg>
+        <p class="tagline splash-tagline">Guide the fish home</p>
         <button id="btn-play" class="btn btn-big">Play</button>
-        <button id="btn-sound-menu" class="btn btn-ghost" aria-label="Toggle sound">🔊 Sound on</button>
+        <button id="btn-sound-menu" class="btn btn-ghost splash-ghost" aria-label="Toggle sound">🔊 Sound on</button>
       </div>
-      <p class="credit">A tiny pastel puzzle world · rotate · slide · flow</p>
+      <p class="credit splash-credit">A tiny pastel puzzle world · rotate · slide · flow</p>
     </section>
 
     <!-- ============ LEVEL SELECT ============ -->
@@ -71,6 +64,14 @@
         <button id="btn-restart" class="btn btn-round" title="Restart" aria-label="Restart level">⟳</button>
         <button id="btn-undo" class="btn btn-round" title="Undo" aria-label="Undo move">↩</button>
         <button id="btn-hint" class="btn btn-round" title="Hint" aria-label="Hint">💡</button>
+      </div>
+      <div class="hud-powers">
+        <button id="btn-power-coral" class="btn btn-round btn-power" data-power="coral"
+          title="Coral Boost — grow a temporary water bridge on an empty cell">🪸<span class="power-count">1</span></button>
+        <button id="btn-power-bubble" class="btn btn-round btn-power" data-power="bubble"
+          title="Bubble Lift — raise a tile one level">🫧<span class="power-count">1</span></button>
+        <button id="btn-power-push" class="btn btn-round btn-power" data-power="push"
+          title="Current Push — push a fish forward along open water">🌊<span class="power-count">1</span></button>
       </div>
     </div>
 

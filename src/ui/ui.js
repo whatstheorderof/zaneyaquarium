@@ -17,6 +17,21 @@ export class UI {
     $("btn-win-next").onclick = () => handlers.onNextLevel?.();
     $("btn-win-replay").onclick = () => handlers.onRestart?.();
     $("btn-win-map").onclick = () => handlers.onOpenMap?.();
+    for (const b of document.querySelectorAll(".btn-power")) {
+      b.onclick = () => handlers.onPowerup?.(b.dataset.power);
+    }
+  }
+
+  /** Update power-up buttons: counts, active targeting, spent state. */
+  setPowerups(counts, active) {
+    for (const b of document.querySelectorAll(".btn-power")) {
+      const name = b.dataset.power;
+      const n = counts[name] ?? 0;
+      b.querySelector(".power-count").textContent = n;
+      b.classList.toggle("active", active === name);
+      b.classList.toggle("spent", n <= 0);
+      b.disabled = n <= 0;
+    }
   }
 
   // ------------------------------------------------ screens
@@ -91,44 +106,71 @@ export class UI {
   }
   hideWin() { $("win-modal").classList.add("hidden"); }
 
-  // ------------------------------------------------ level map
+  // ------------------------------------------------ progression map
   _renderMap(levels, worlds, progress) {
     const grid = $("level-grid");
     grid.innerHTML = "";
     let totalStars = 0;
+    const PER_ROW = 5;
 
     for (const world of worlds) {
       const worldLevels = levels.filter((l) => (l.world || 0) === world.id);
       if (!worldLevels.length) continue;
 
-      const header = document.createElement("div");
-      header.className = "world-title";
-      header.innerHTML =
-        `<span class="world-dot" style="background:${world.theme.glow}"></span>${world.name}`;
-      grid.appendChild(header);
+      const section = document.createElement("div");
+      section.className = "world-section";
+      section.innerHTML =
+        `<div class="world-title"><span class="world-dot" style="background:${world.theme.glow}"></span>${world.name}</div>`;
 
-      for (const lvl of worldLevels) {
-        const unlocked = lvl.id <= progress.unlocked;
-        const gotStars = progress.stars[lvl.id] || 0;
-        totalStars += gotStars;
-        const nStars = lvl.tiles.filter((t) => t.star).length;
+      // Snake layout: rows of 5, alternating direction, dashed connectors.
+      for (let r = 0; r * PER_ROW < worldLevels.length; r++) {
+        const rowLevels = worldLevels.slice(r * PER_ROW, (r + 1) * PER_ROW);
+        const row = document.createElement("div");
+        row.className = "map-row" + (r % 2 === 1 ? " rev" : "");
 
-        const card = document.createElement("button");
-        card.className =
-          "level-card" + (unlocked ? "" : " locked") + (lvl.id === 0 ? " tutorial" : "");
-        card.style.setProperty("--world-tint", world.theme.glow);
-        card.innerHTML = `
-          <div class="num">${lvl.id === 0 ? "✎" : lvl.id}</div>
-          <div class="lname">${lvl.name}</div>
-          <div class="stars">${
-            unlocked
-              ? "★".repeat(gotStars) + `<span class="off">${"★".repeat(Math.max(0, nStars - gotStars))}</span>`
-              : "🔒"
-          }</div>`;
-        if (unlocked) card.onclick = () => this.h.onSelectLevel?.(lvl.id);
-        grid.appendChild(card);
+        rowLevels.forEach((lvl, i) => {
+          if (i > 0) {
+            const link = document.createElement("span");
+            link.className = "map-link";
+            row.appendChild(link);
+          }
+          row.appendChild(this._mapNode(lvl, world, progress));
+          totalStars += progress.stars[lvl.id] || 0;
+        });
+
+        // Vertical dashed connector down to the next row.
+        if ((r + 1) * PER_ROW < worldLevels.length) {
+          const v = document.createElement("div");
+          v.className = "map-link-v " + (r % 2 === 0 ? "at-right" : "at-left");
+          row.appendChild(v);
+        }
+        section.appendChild(row);
       }
+      grid.appendChild(section);
     }
     $("map-total-stars").textContent = `★ ${totalStars}`;
+  }
+
+  _mapNode(lvl, world, progress) {
+    const unlocked = lvl.id <= progress.unlocked;
+    const isCurrent = lvl.id === progress.unlocked;
+    const gotStars = progress.stars[lvl.id] || 0;
+    const nStars = lvl.tiles.filter((t) => t.star).length;
+
+    const node = document.createElement("button");
+    node.className =
+      "map-node" + (unlocked ? "" : " locked") + (lvl.id === 0 ? " tutorial" : "");
+    node.style.setProperty("--world-tint", world.theme.glow);
+    node.title = lvl.name + (unlocked ? "" : " (locked)");
+    node.innerHTML = `
+      ${isCurrent ? '<span class="pin">📍</span>' : ""}
+      <div class="num">${lvl.id === 0 ? "✎" : lvl.id}</div>
+      <div class="stars">${
+        unlocked
+          ? "★".repeat(gotStars) + `<span class="off">${"★".repeat(Math.max(0, nStars - gotStars))}</span>`
+          : "🔒"
+      }</div>`;
+    if (unlocked) node.onclick = () => this.h.onSelectLevel?.(lvl.id);
+    return node;
   }
 }
