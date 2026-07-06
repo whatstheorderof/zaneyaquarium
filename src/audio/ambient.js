@@ -8,6 +8,8 @@ export class AudioEngine {
     this.master = null;
     this._ambientOn = false;
     this._bubbleTimer = null;
+    this._musicTimer = null;
+    this._echo = null;
   }
 
   /** Must be called from a user gesture (browser autoplay policy). */
@@ -58,7 +60,7 @@ export class AudioEngine {
     lp.frequency.value = 320;
 
     const g = ctx.createGain();
-    g.gain.value = 0.05;
+    g.gain.value = 0.035;
 
     // Slow swell.
     const lfo = ctx.createOscillator();
@@ -71,18 +73,10 @@ export class AudioEngine {
     noise.start();
     lfo.start();
 
-    // Dreamy pad: two soft detuned sines.
-    const padG = ctx.createGain();
-    padG.gain.value = 0.018;
-    for (const [freq, det] of [[196, 0], [294, 3]]) {
-      const o = ctx.createOscillator();
-      o.type = "sine";
-      o.frequency.value = freq;
-      o.detune.value = det;
-      o.connect(padG);
-      o.start();
-    }
-    padG.connect(this.master);
+    // Dreamy generative music: soft bell notes from a pentatonic scale,
+    // drifting through a feedback echo. Never repeats, never drones.
+    this._echo = this._makeEcho();
+    this._startMusic();
 
     // Occasional bubble blips.
     const scheduleBubble = () => {
@@ -92,6 +86,74 @@ export class AudioEngine {
       }, 900 + Math.random() * 2600);
     };
     scheduleBubble();
+  }
+
+  // ------------------------------------------------ generative music
+  _makeEcho() {
+    const ctx = this.ctx;
+    const input = ctx.createGain();
+    const delay = ctx.createDelay(1.5);
+    delay.delayTime.value = 0.42;
+    const feedback = ctx.createGain();
+    feedback.gain.value = 0.38;
+    const damp = ctx.createBiquadFilter();
+    damp.type = "lowpass";
+    damp.frequency.value = 2200;
+
+    input.connect(this.master);
+    input.connect(delay);
+    delay.connect(damp).connect(feedback).connect(delay);
+    feedback.connect(this.master);
+    return input;
+  }
+
+  _startMusic() {
+    const ctx = this.ctx;
+    // C major pentatonic across two octaves — every combination sounds calm.
+    const scale = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25, 783.99];
+    let lastIdx = 4;
+
+    const bell = (freq, when, vol) => {
+      const o = ctx.createOscillator();
+      o.type = "sine";
+      o.frequency.value = freq;
+      // A quiet octave shimmer on top makes it bell-like.
+      const o2 = ctx.createOscillator();
+      o2.type = "sine";
+      o2.frequency.value = freq * 2;
+
+      const g = ctx.createGain();
+      const g2 = ctx.createGain();
+      g.gain.setValueAtTime(0, when);
+      g.gain.linearRampToValueAtTime(vol, when + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.0001, when + 2.4);
+      g2.gain.setValueAtTime(0, when);
+      g2.gain.linearRampToValueAtTime(vol * 0.25, when + 0.03);
+      g2.gain.exponentialRampToValueAtTime(0.0001, when + 1.2);
+
+      o.connect(g).connect(this._echo);
+      o2.connect(g2).connect(this._echo);
+      o.start(when); o.stop(when + 2.6);
+      o2.start(when); o2.stop(when + 1.4);
+    };
+
+    const phrase = () => {
+      if (!this.muted) {
+        const now = ctx.currentTime;
+        // Melodies wander: step to a nearby scale note most of the time.
+        const step = [-2, -1, -1, 1, 1, 2][(Math.random() * 6) | 0];
+        lastIdx = Math.max(0, Math.min(scale.length - 1, lastIdx + step));
+        bell(scale[lastIdx], now, 0.045);
+        // Sometimes add a soft harmony a scale-third below, slightly behind.
+        if (Math.random() < 0.35 && lastIdx >= 2) {
+          bell(scale[lastIdx - 2], now + 0.22, 0.028);
+        }
+        // Rarely, a deep gentle root note grounds the phrase.
+        if (Math.random() < 0.18) bell(scale[0] / 2, now + 0.1, 0.035);
+      }
+      this._musicTimer = setTimeout(phrase, 1600 + Math.random() * 2400);
+    };
+    this._musicTimer = setTimeout(phrase, 600);
   }
 
   // ------------------------------------------------ one-shots
