@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>Zaney Aquarium — Guide the fish home</title>
+  <meta name="description" content="A peaceful 3D isometric puzzle game. Rotate, slide and raise beautiful aquarium tiles to guide the fish home." />
+  <meta name="theme-color" content="#dcebf5" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- ============ MAIN MENU ============ -->
+    <section id="screen-menu" class="screen visible">
+      <div class="menu-card">
+        <div class="hero-fish" aria-hidden="true">
+          <svg viewBox="0 0 120 80" width="150" height="100">
+            <g class="fish-swim">
+              <ellipse cx="55" cy="40" rx="28" ry="18" fill="#ffab4a"/>
+              <path d="M80 40 L104 24 L98 40 L104 56 Z" fill="#ff8fa3"/>
+              <ellipse cx="44" cy="34" rx="4.5" ry="5" fill="#2b3a55"/>
+              <circle cx="42.5" cy="32.5" r="1.6" fill="#fff"/>
+              <path d="M50 52 Q56 58 64 52" stroke="#e88a2f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </g>
+            <circle class="bub b1" cx="18" cy="30" r="4" fill="#aee6f2"/>
+            <circle class="bub b2" cx="26" cy="52" r="2.6" fill="#aee6f2"/>
+            <circle class="bub b3" cx="12" cy="46" r="2" fill="#cdeef7"/>
+          </svg>
+        </div>
+        <h1 class="logo">Zaney<br/><span>Aquarium</span></h1>
+        <p class="tagline">Guide the fish home</p>
+        <button id="btn-play" class="btn btn-big">Play</button>
+        <button id="btn-sound-menu" class="btn btn-ghost" aria-label="Toggle sound">🔊 Sound on</button>
+      </div>
+      <p class="credit">A tiny pastel puzzle world · rotate · slide · flow</p>
+    </section>
+
+    <!-- ============ LEVEL SELECT ============ -->
+    <section id="screen-map" class="screen">
+      <header class="map-header">
+        <button id="btn-map-back" class="btn btn-round" aria-label="Back to menu">←</button>
+        <h2>Choose a reef</h2>
+        <span class="map-total-stars" id="map-total-stars">★ 0</span>
+      </header>
+      <div id="level-grid" class="level-grid"></div>
+    </section>
+
+    <!-- ============ IN-GAME HUD ============ -->
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <button id="btn-back" class="btn btn-round" aria-label="Back to map">←</button>
+        <div class="hud-center">
+          <div id="hud-level-name" class="hud-level-name">Level</div>
+          <div class="hud-sub">
+            <span id="hud-moves">Moves: 0</span>
+            <span id="hud-stars" class="hud-stars">★ 0/0</span>
+          </div>
+        </div>
+        <button id="btn-sound" class="btn btn-round" aria-label="Toggle sound">🔊</button>
+      </div>
+      <div class="hud-side">
+        <button id="btn-restart" class="btn btn-round" title="Restart" aria-label="Restart level">⟳</button>
+        <button id="btn-undo" class="btn btn-round" title="Undo" aria-label="Undo move">↩</button>
+        <button id="btn-hint" class="btn btn-round" title="Hint" aria-label="Hint">💡</button>
+      </div>
+    </div>
+
+    <div id="tutorial-tip" class="hidden"></div>
+    <div id="toast" class="hidden"></div>
+
+    <!-- ============ WIN MODAL ============ -->
+    <div id="win-modal" class="hidden">
+      <div class="win-card">
+        <div class="win-title">Level complete!</div>
+        <div id="win-stars" class="win-stars"></div>
+        <div id="win-detail" class="win-detail"></div>
+        <div class="win-buttons">
+          <button id="btn-win-map" class="btn btn-ghost">Map</button>
+          <button id="btn-win-replay" class="btn btn-ghost">Replay</button>
+          <button id="btn-win-next" class="btn">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

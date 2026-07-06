@@ -1,0 +1,267 @@
+/* ================= Zaney Aquarium — pastel UI ================= */
+:root {
+  --cream: #f7f3ea;
+  --sky: #dcebf5;
+  --ink: #2b3a55;
+  --ink-soft: #5b6b8c;
+  --teal: #58c8c8;
+  --teal-deep: #2fa8a8;
+  --pink: #f3a8c0;
+  --lavender: #b8a7e0;
+  --gold: #ffd166;
+  --card: rgba(255, 255, 255, 0.72);
+  --shadow: 0 10px 30px rgba(80, 110, 150, 0.18);
+  --radius: 22px;
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Quicksand", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--cream) 0%, var(--sky) 55%, #cfe4f2 100%);
+  user-select: none; -webkit-user-select: none;
+}
+
+#app { position: fixed; inset: 0; }
+
+#game-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* ---------- screens ---------- */
+.screen {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--sky) 60%, #cfe4f2 100%);
+  z-index: 20;
+  padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+}
+.screen.visible { display: flex; }
+
+/* ---------- buttons ---------- */
+.btn {
+  font-family: "Baloo 2", "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  background: linear-gradient(180deg, var(--teal) 0%, var(--teal-deep) 100%);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 34px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(35, 130, 130, 0.55), 0 12px 24px rgba(80, 110, 150, 0.25);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.2s;
+}
+.btn:hover { filter: brightness(1.06); }
+.btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(35, 130, 130, 0.55); }
+.btn-big { font-size: 1.45rem; padding: 14px 58px; }
+.btn-ghost {
+  background: var(--card);
+  color: var(--ink-soft);
+  box-shadow: 0 4px 0 rgba(150, 170, 195, 0.35), 0 8px 18px rgba(80, 110, 150, 0.15);
+}
+.btn-round {
+  width: 52px; height: 52px;
+  padding: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--card);
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 0 rgba(150, 170, 195, 0.35), 0 8px 18px rgba(80, 110, 150, 0.15);
+}
+.btn:disabled { opacity: 0.45; cursor: default; filter: grayscale(0.4); }
+
+/* ---------- menu ---------- */
+.menu-card {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 14px;
+  padding: 40px 48px 34px;
+  background: var(--card);
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+.logo {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 3.1rem;
+  line-height: 0.95;
+  margin: 0;
+  color: var(--lavender);
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--ink); font-size: 2.55rem; }
+.tagline {
+  margin: 0 0 8px;
+  color: var(--teal-deep);
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.credit { position: absolute; bottom: 18px; color: var(--ink-soft); font-size: 0.8rem; opacity: 0.75; }
+
+.hero-fish .fish-swim { animation: swim 3.4s ease-in-out infinite; transform-origin: 55px 40px; }
+@keyframes swim {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+.hero-fish .bub { animation: rise 3s linear infinite; opacity: 0.9; }
+.hero-fish .b2 { animation-delay: 1s; }
+.hero-fish .b3 { animation-delay: 2s; }
+@keyframes rise {
+  from { transform: translateY(14px); opacity: 0; }
+  30% { opacity: 0.9; }
+  to { transform: translateY(-26px); opacity: 0; }
+}
+
+/* ---------- level select ---------- */
+.map-header {
+  display: flex; align-items: center; gap: 16px;
+  width: min(680px, 94vw);
+  margin-bottom: 18px;
+}
+.map-header h2 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 1.7rem; margin: 0; flex: 1;
+}
+.map-total-stars { font-weight: 700; color: #d9a520; font-size: 1.1rem; }
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 14px;
+  width: min(680px, 94vw);
+  max-height: 62vh;
+  overflow-y: auto;
+  padding: 6px;
+}
+.level-card {
+  position: relative;
+  border: none;
+  border-radius: var(--radius);
+  aspect-ratio: 1;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+  font-family: "Baloo 2", sans-serif;
+  color: var(--ink);
+  transition: transform 0.15s ease;
+  backdrop-filter: blur(8px);
+}
+.level-card:hover:not(.locked) { transform: translateY(-4px) scale(1.03); }
+.level-card .num { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+.level-card .lname { font-size: 0.62rem; font-weight: 600; color: var(--ink-soft); padding: 0 6px; text-align: center; }
+.level-card .stars { font-size: 0.8rem; color: #d9a520; letter-spacing: 1px; }
+.level-card .stars .off { color: #c9d4e2; }
+.level-card.locked { opacity: 0.55; cursor: default; filter: saturate(0.3); }
+.level-card.locked .num { color: var(--ink-soft); }
+.level-card.tutorial { background: linear-gradient(180deg, #fdf3d8, #fbe6bd); }
+
+/* ---------- HUD ---------- */
+#hud { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+#hud.hidden { display: none; }
+#hud button { pointer-events: auto; }
+
+.hud-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: calc(14px + env(safe-area-inset-top)) 16px 0;
+  gap: 12px;
+}
+.hud-center {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 8px 22px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.hud-level-name { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.05rem; }
+.hud-sub { display: flex; gap: 16px; justify-content: center; font-size: 0.8rem; color: var(--ink-soft); font-weight: 600; }
+.hud-stars { color: #d9a520; }
+
+.hud-side {
+  position: absolute;
+  right: 16px; bottom: calc(20px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+/* ---------- toast & tutorial ---------- */
+#toast, #tutorial-tip {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  background: rgba(43, 58, 85, 0.92);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 16px;
+  max-width: min(440px, 86vw);
+  text-align: center;
+  z-index: 30;
+  box-shadow: var(--shadow);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+#tutorial-tip {
+  background: var(--card);
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--teal);
+}
+#toast.hidden, #tutorial-tip.hidden { opacity: 0; transform: translateX(-50%) translateY(12px); }
+
+/* ---------- win modal ---------- */
+#win-modal {
+  position: absolute; inset: 0;
+  z-index: 40;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(120, 150, 185, 0.25);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.35s ease;
+}
+#win-modal.hidden { opacity: 0; pointer-events: none; }
+.win-card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  padding: 34px 44px 30px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+#win-modal.hidden .win-card { animation: none; }
+@keyframes pop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.win-title { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 8px; }
+.win-stars { font-size: 2.2rem; letter-spacing: 6px; color: var(--gold); margin: 4px 0 6px; text-shadow: 0 2px 0 rgba(200,150,0,0.25); }
+.win-stars .off { color: #ccd7e4; text-shadow: none; }
+.win-detail { color: var(--ink-soft); font-weight: 600; font-size: 0.9rem; margin-bottom: 20px; }
+.win-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.hidden { visibility: hidden; }
+#toast.hidden, #tutorial-tip.hidden, #win-modal.hidden { visibility: visible; }
+
+@media (max-width: 520px) {
+  .menu-card { padding: 30px 26px 26px; }
+  .logo { font-size: 2.4rem; }
+  .logo span { font-size: 2rem; }
+  .btn-round { width: 46px; height: 46px; }
+  .hud-side { gap: 10px; }
+}
