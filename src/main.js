@@ -193,6 +193,7 @@ async function boot() {
   requestAnimationFrame(tick);
 
   showMenu();
+  window.__zaneyBooted = true; // tells the boot watchdog in index.html all is well
 }
 
 boot().catch((err) => {
@@ -201,4 +202,5 @@ boot().catch((err) => {
   el.style.cssText = "position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-family:sans-serif;color:#2b3a55;text-align:center;padding:20px;";
   el.innerHTML = "<div><h2>Oops, the aquarium sprang a leak 🫧</h2><p>Please serve this folder over HTTP (see README) and reload.</p></div>";
   document.body.appendChild(el);
+  window.__zaneyBooted = true; // we've shown our own message; keep the watchdog quiet
 });

@@ -92,5 +92,32 @@
     </div>
   </div>
   <script type="module" src="src/main.js"></script>
+  <script>
+    // Boot watchdog: if the module script couldn't load (e.g. the page was
+    // opened via file:// or the three.js CDN is unreachable), say so instead
+    // of failing silently.
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (window.__zaneyBooted) return;
+        var isFile = location.protocol === "file:";
+        var el = document.createElement("div");
+        el.style.cssText =
+          "position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;" +
+          "background:rgba(247,243,234,0.97);font-family:sans-serif;color:#2b3a55;text-align:center;padding:24px;";
+        el.innerHTML = isFile
+          ? "<div style='max-width:460px'><h2>🫧 The aquarium needs a web server</h2>" +
+            "<p>Browsers block game code when a page is opened straight from a file.</p>" +
+            "<p><b>Open a terminal in this folder and run:</b></p>" +
+            "<p><code style='background:#e6eef5;padding:6px 12px;border-radius:8px;display:inline-block'>npx serve .</code>" +
+            " &nbsp;or&nbsp; " +
+            "<code style='background:#e6eef5;padding:6px 12px;border-radius:8px;display:inline-block'>python3 -m http.server 8000</code></p>" +
+            "<p>then visit the address it prints (e.g. <b>http://localhost:8000</b>).</p></div>"
+          : "<div style='max-width:460px'><h2>🫧 The game couldn't start</h2>" +
+            "<p>The 3D engine failed to load — check your internet connection " +
+            "(three.js loads from a CDN) and the browser console, then reload.</p></div>";
+        document.body.appendChild(el);
+      }, 1800);
+    });
+  </script>
 </body>
 </html>
