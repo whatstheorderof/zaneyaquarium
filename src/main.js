@@ -212,7 +212,20 @@ async function boot() {
     board.dispose();
     if (!splash) splash = buildSplash(view.boardGroup);
     view.frame(5, 4);
+    layoutSplash();
   }
+
+  /** On portrait screens, slide the aquarium cube below the menu copy. */
+  function layoutSplash() {
+    if (!splash) return;
+    const portrait = window.innerHeight > window.innerWidth;
+    splash.group.position.set(portrait ? 2.4 : 0, 0, portrait ? 2.4 : 0);
+    splash.group.scale.setScalar(portrait ? 0.75 : 1);
+  }
+  window.addEventListener("resize", () => {
+    layoutSplash();
+    if (state.screen === "map") ui.showMap(levels, worlds, progress);
+  });
   function showMap() {
     state.screen = "map";
     ui.showMap(levels, worlds, progress);

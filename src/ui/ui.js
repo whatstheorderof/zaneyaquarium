@@ -111,7 +111,8 @@ export class UI {
     const grid = $("level-grid");
     grid.innerHTML = "";
     let totalStars = 0;
-    const PER_ROW = 5;
+    // Fewer nodes per row on narrow screens so rows never overflow their card.
+    const PER_ROW = window.innerWidth < 420 ? 3 : window.innerWidth < 640 ? 4 : 5;
 
     for (const world of worlds) {
       const worldLevels = levels.filter((l) => (l.world || 0) === world.id);

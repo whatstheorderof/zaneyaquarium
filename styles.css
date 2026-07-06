@@ -256,7 +256,8 @@ html, body {
 
 .map-node .pin {
   position: absolute;
-  top: -30px; left: 50%;
+  top: -26px; left: 50%;
+  z-index: 2;
   transform: translateX(-50%);
   font-size: 1.5rem;
   filter: drop-shadow(0 3px 4px rgba(60, 40, 40, 0.4));
@@ -286,11 +287,20 @@ html, body {
 .map-link-v.at-right { right: 37px; }
 .map-link-v.at-left { left: 37px; }
 
-@media (max-width: 520px) {
+@media (max-width: 640px) {
+  .world-section { padding: 14px 10px 16px; }
   .map-node { width: 62px; height: 62px; }
   .map-node .num { font-size: 1.2rem; }
+  .map-link { min-width: 10px; }
   .map-link-v.at-right { right: 30px; }
   .map-link-v.at-left { left: 30px; }
+}
+@media (max-width: 420px) {
+  .map-node { width: 56px; height: 56px; }
+  .map-node .num { font-size: 1.1rem; }
+  .map-node .stars { font-size: 0.58rem; }
+  .map-link-v.at-right { right: 27px; }
+  .map-link-v.at-left { left: 27px; }
 }
 
 /* ---------- HUD ---------- */
