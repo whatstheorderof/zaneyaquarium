@@ -53,7 +53,8 @@ export function createScene(canvas) {
   resize();
 
   // --- Lights: soft pastel dream ---
-  scene.add(new THREE.HemisphereLight(0xfff6e8, 0xbcd8ea, 0.95));
+  const hemi = new THREE.HemisphereLight(0xfff6e8, 0xbcd8ea, 0.95);
+  scene.add(hemi);
 
   const sun = new THREE.DirectionalLight(0xfff0da, 1.35);
   sun.position.set(7, 14, 5);
@@ -103,10 +104,19 @@ export function createScene(canvas) {
     bubbles.update(dt);
   }
 
+  /** Apply a world theme: fog, lights, glow colour (see levels.json worlds). */
+  function setTheme(theme) {
+    if (!theme) return;
+    scene.fog.color.set(theme.fog);
+    hemi.color.set(theme.hemiSky);
+    hemi.groundColor.set(theme.hemiGround);
+    glow.material.color.set(theme.glow);
+  }
+
   return {
     scene, camera, renderer, boardGroup,
     frame: (w, h) => { frame(w, h); frameExtras(w, h); },
-    resize, update,
+    resize, update, setTheme,
     render: () => renderer.render(scene, camera),
   };
 }
@@ -116,15 +126,16 @@ function makeGlowDisc() {
   const c = document.createElement("canvas");
   c.width = c.height = 256;
   const ctx = c.getContext("2d");
+  // White gradient so the disc can be tinted per world theme.
   const g = ctx.createRadialGradient(128, 128, 10, 128, 128, 128);
-  g.addColorStop(0, "rgba(126, 220, 220, 0.85)");
-  g.addColorStop(0.55, "rgba(150, 200, 235, 0.35)");
-  g.addColorStop(1, "rgba(150, 200, 235, 0)");
+  g.addColorStop(0, "rgba(255, 255, 255, 0.85)");
+  g.addColorStop(0.55, "rgba(255, 255, 255, 0.3)");
+  g.addColorStop(1, "rgba(255, 255, 255, 0)");
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 256, 256);
   const tex = new THREE.CanvasTexture(c);
   const mat = new THREE.MeshBasicMaterial({
-    map: tex, transparent: true, opacity: 0.35, depthWrite: false,
+    map: tex, color: 0x7edcdc, transparent: true, opacity: 0.35, depthWrite: false,
   });
   const mesh = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 2.4), mat);
   mesh.rotation.x = -Math.PI / 2;

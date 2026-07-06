@@ -15,6 +15,19 @@ export const PALETTE = {
   rock: 0xcfd8e6,
 };
 
+/** Apply a world theme to the tile palette + shared water material. */
+export function applyTheme(theme) {
+  if (!theme) return;
+  const hex = (s) => parseInt(s.replace("#", ""), 16);
+  if (theme.bases) PALETTE.bases = theme.bases.map(hex);
+  if (theme.water) PALETTE.water = hex(theme.water);
+  if (theme.waterGlow) PALETTE.waterGlow = hex(theme.waterGlow);
+  if (mats.water) {
+    mats.water.color.set(PALETTE.water);
+    mats.water.emissive.set(PALETTE.waterGlow);
+  }
+}
+
 const TILE = 1;           // world size of a tile
 const BASE_H = 0.55;      // base block height at h = 0
 const LEVEL_H = 0.55;     // extra height per elevation level

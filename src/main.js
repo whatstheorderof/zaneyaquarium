@@ -3,6 +3,7 @@ import { createScene } from "./core/scene.js";
 import { createInput } from "./core/input.js";
 import { updateTweens } from "./core/tween.js";
 import { Board } from "./game/board.js";
+import { applyTheme } from "./game/tileFactory.js";
 import { FishController } from "./game/fish.js";
 import { AudioEngine } from "./audio/ambient.js";
 import { UI } from "./ui/ui.js";
@@ -23,7 +24,7 @@ function saveProgress(p) {
 // ------------------------------------------------------------ bootstrap
 async function boot() {
   const res = await fetch("levels/levels.json");
-  const { levels } = await res.json();
+  const { levels, worlds } = await res.json();
 
   const canvas = document.getElementById("game-canvas");
   const view = createScene(canvas);
@@ -118,11 +119,20 @@ async function boot() {
   }
   function showMap() {
     state.screen = "map";
-    ui.showMap(levels, progress);
+    ui.showMap(levels, worlds, progress);
+  }
+  function applyWorldTheme(level) {
+    const world = worlds.find((w) => w.id === (level.world || 0)) || worlds[0];
+    const t = world.theme;
+    view.setTheme(t);
+    applyTheme(t); // tile palette + water colour
+    document.getElementById("app").style.background =
+      `linear-gradient(180deg, ${t.bgTop} 0%, ${t.bgBottom} 100%)`;
   }
   function startLevel(id) {
     const level = levels.find((l) => l.id === id);
     if (!level) return;
+    applyWorldTheme(level);
     state.screen = "game";
     state.level = level;
     state.moves = 0;

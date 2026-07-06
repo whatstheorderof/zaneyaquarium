@@ -27,12 +27,12 @@ export class UI {
     this.hideTip();
   }
 
-  showMap(levels, progress) {
+  showMap(levels, worlds, progress) {
     this._setScreen("screen-map");
     $("hud").classList.add("hidden");
     this.hideWin();
     this.hideTip();
-    this._renderMap(levels, progress);
+    this._renderMap(levels, worlds, progress);
   }
 
   showGame(level) {
@@ -92,28 +92,42 @@ export class UI {
   hideWin() { $("win-modal").classList.add("hidden"); }
 
   // ------------------------------------------------ level map
-  _renderMap(levels, progress) {
+  _renderMap(levels, worlds, progress) {
     const grid = $("level-grid");
     grid.innerHTML = "";
     let totalStars = 0;
-    for (const lvl of levels) {
-      const unlocked = lvl.id <= progress.unlocked;
-      const gotStars = progress.stars[lvl.id] || 0;
-      totalStars += gotStars;
-      const nStars = lvl.tiles.filter((t) => t.star).length;
 
-      const card = document.createElement("button");
-      card.className = "level-card" + (unlocked ? "" : " locked") + (lvl.id === 0 ? " tutorial" : "");
-      card.innerHTML = `
-        <div class="num">${lvl.id === 0 ? "✎" : lvl.id}</div>
-        <div class="lname">${lvl.name}</div>
-        <div class="stars">${
-          unlocked
-            ? "★".repeat(gotStars) + `<span class="off">${"★".repeat(Math.max(0, nStars - gotStars))}</span>`
-            : "🔒"
-        }</div>`;
-      if (unlocked) card.onclick = () => this.h.onSelectLevel?.(lvl.id);
-      grid.appendChild(card);
+    for (const world of worlds) {
+      const worldLevels = levels.filter((l) => (l.world || 0) === world.id);
+      if (!worldLevels.length) continue;
+
+      const header = document.createElement("div");
+      header.className = "world-title";
+      header.innerHTML =
+        `<span class="world-dot" style="background:${world.theme.glow}"></span>${world.name}`;
+      grid.appendChild(header);
+
+      for (const lvl of worldLevels) {
+        const unlocked = lvl.id <= progress.unlocked;
+        const gotStars = progress.stars[lvl.id] || 0;
+        totalStars += gotStars;
+        const nStars = lvl.tiles.filter((t) => t.star).length;
+
+        const card = document.createElement("button");
+        card.className =
+          "level-card" + (unlocked ? "" : " locked") + (lvl.id === 0 ? " tutorial" : "");
+        card.style.setProperty("--world-tint", world.theme.glow);
+        card.innerHTML = `
+          <div class="num">${lvl.id === 0 ? "✎" : lvl.id}</div>
+          <div class="lname">${lvl.name}</div>
+          <div class="stars">${
+            unlocked
+              ? "★".repeat(gotStars) + `<span class="off">${"★".repeat(Math.max(0, nStars - gotStars))}</span>`
+              : "🔒"
+          }</div>`;
+        if (unlocked) card.onclick = () => this.h.onSelectLevel?.(lvl.id);
+        grid.appendChild(card);
+      }
     }
     $("map-total-stars").textContent = `★ ${totalStars}`;
   }

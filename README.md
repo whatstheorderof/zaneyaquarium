@@ -55,7 +55,7 @@ Progress (unlocked levels, best stars, sound preference) is saved in `localStora
 ```
 index.html              UI shell + import map (three.js via CDN)
 styles.css              pastel UI styling
-levels/levels.json      all 11 levels as data (tutorial + 10)
+levels/levels.json      51 levels across 5 themed worlds (+ world themes)
 src/
   main.js               bootstrap, game state, screens, main loop
   core/
@@ -76,7 +76,20 @@ src/
     ui.js               DOM overlay: menu, level map, HUD, win modal, toasts
 scripts/
   validate-levels.mjs   proves every level is solvable (run: node scripts/validate-levels.mjs)
+  generate-worlds.mjs   regenerates worlds 2-5 (levels 11-50) from compact path specs
 ```
+
+## Worlds
+
+| World | Levels | Theme | New mechanics / difficulty |
+|---|---|---|---|
+| 1 · Coral Reef | 0–10 | cream & sky pastels | tutorial → all basics |
+| 2 · Sunken Temple | 11–20 | misty jade | longer paths, twin fish, double sliders |
+| 3 · Golden Shallows | 21–30 | warm sunset gold | ramps, lifts, height puzzles everywhere |
+| 4 · Midnight Lagoon | 31–40 | deep indigo, bioluminescent | big boards, combos, 3-fish finale |
+| 5 · Dream Palace | 41–50 | pink-violet twilight | double-height climbs, drop-lifts, everything at once |
+
+Each world re-themes the fog, lighting, glow, water colour and tile palette (see `worlds` in `levels.json`).
 
 ## Level format
 
