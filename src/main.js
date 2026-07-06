@@ -215,12 +215,13 @@ async function boot() {
     layoutSplash();
   }
 
-  /** On portrait screens, slide the aquarium cube below the menu copy. */
+  /** Splash composition: zoomed-in scene; on portrait the cube sits mid-screen. */
   function layoutSplash() {
     if (!splash) return;
     const portrait = window.innerHeight > window.innerWidth;
-    splash.group.position.set(portrait ? 2.4 : 0, 0, portrait ? 2.4 : 0);
-    splash.group.scale.setScalar(portrait ? 0.75 : 1);
+    splash.group.position.set(portrait ? 2.2 : 0, 0, portrait ? 2.2 : 0);
+    splash.group.scale.setScalar(portrait ? 0.95 : 1);
+    view.setZoom(portrait ? 0.85 : 0.72); // fill the frame, less empty dark
   }
   window.addEventListener("resize", () => {
     layoutSplash();
@@ -244,6 +245,7 @@ async function boot() {
     applyWorldTheme(level);
     document.getElementById("app").classList.remove("splash-bg");
     if (splash) { splash.dispose(); splash = null; }
+    view.setZoom(1);
     state.screen = "game";
     state.level = level;
     state.moves = 0;

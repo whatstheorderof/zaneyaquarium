@@ -25,6 +25,7 @@ export function createScene(canvas) {
   camera.lookAt(0, 0, 0);
 
   let viewSize = 5.5;
+  let zoom = 1; // < 1 zooms in (used by the splash to fill the screen)
   let center = new THREE.Vector3(0, 0, 0);
 
   function frame(boardW, boardH) {
@@ -42,7 +43,8 @@ export function createScene(canvas) {
     renderer.setSize(w, h, false);
     const aspect = w / h;
     // Fit board in both portrait and landscape.
-    const vs = aspect < 1 ? viewSize / Math.max(aspect, 0.52) : viewSize;
+    const v = viewSize * zoom;
+    const vs = aspect < 1 ? v / Math.max(aspect, 0.52) : v;
     camera.left = -vs * aspect;
     camera.right = vs * aspect;
     camera.top = vs;
@@ -119,6 +121,7 @@ export function createScene(canvas) {
     frame: (w, h) => { frame(w, h); frameExtras(w, h); },
     resize, update, setTheme,
     render: () => renderer.render(scene, camera),
+    setZoom: (z) => { zoom = z; resize(); },
   };
 }
 
