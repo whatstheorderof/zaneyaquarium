@@ -1,0 +1,21 @@
+{
+  "name": "zaneyaquarium",
+  "version": "1.0.0",
+  "description": "A peaceful 3D isometric puzzle game. Rotate, slide and raise beautiful aquarium tiles to guide the fish home.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "validate": "node scripts/validate-levels.mjs"
+  },
+  "keywords": [
+    "game",
+    "puzzle",
+    "threejs",
+    "webgl"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}

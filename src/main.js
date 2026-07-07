@@ -1,4 +1,5 @@
 // Zaney Aquarium — entry point. Wires scene, board, fish, UI and audio together.
+import { inject } from "@vercel/analytics";
 import { createScene } from "./core/scene.js";
 import { createInput } from "./core/input.js";
 import { updateTweens } from "./core/tween.js";
@@ -9,6 +10,9 @@ import { buildSplash } from "./core/splash.js";
 import { FishController } from "./game/fish.js";
 import { AudioEngine } from "./audio/ambient.js";
 import { UI } from "./ui/ui.js";
+
+// Initialize Vercel Analytics
+inject();
 
 // ------------------------------------------------------------ persistence
 const SAVE_KEY = "zaney-aquarium-save-v1";
