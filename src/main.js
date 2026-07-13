@@ -119,6 +119,20 @@ async function boot() {
   const unlockAudio = () => { audio.ensure(); window.removeEventListener("pointerdown", unlockAudio); };
   window.addEventListener("pointerdown", unlockAudio);
 
+  // Keep the browser from zooming the page — the game has its own zoom.
+  // (iOS Safari ignores user-scalable=no, so block its gesture events too.)
+  document.addEventListener("gesturestart", (e) => e.preventDefault());
+  document.addEventListener("gesturechange", (e) => e.preventDefault());
+  document.addEventListener("touchmove", (e) => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener("dblclick", (e) => e.preventDefault());
+  // Double-tap the board to reset the camera zoom.
+  canvas.addEventListener("dblclick", () => {
+    if (state.screen === "game") view.setZoom(1);
+    else if (state.screen === "menu") layoutSplash();
+  });
+
   // --------- input (tile / cell taps) ---------
   createInput(canvas, view.camera, () => (state.screen === "game" ? board.pickables : []), (hit) => {
     if (state.screen !== "game" || state.won) return;

@@ -27,7 +27,9 @@ html, body {
   user-select: none; -webkit-user-select: none;
 }
 
-#app { position: fixed; inset: 0; }
+#app { position: fixed; inset: 0; touch-action: none; }
+.btn { touch-action: manipulation; }
+.level-grid { touch-action: pan-y; }
 
 #game-canvas {
   position: absolute; inset: 0;

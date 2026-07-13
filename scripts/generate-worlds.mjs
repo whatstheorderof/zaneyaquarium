@@ -56,6 +56,24 @@ const WORLDS = [
       bases: ["#e0a8d0", "#c0a8e8", "#f0c0d8", "#b0b8f0", "#e8b8e8", "#d0c0f0"],
     },
   },
+  {
+    id: 5, name: "Kelp Forest",
+    theme: {
+      bgTop: "#e3f2e4", bgBottom: "#9cc4a8", fog: "#c2ddc6",
+      hemiSky: "#eef8e0", hemiGround: "#8fb89c", glow: "#57d9a0",
+      water: "#4fc9a0", waterGlow: "#9df0cc",
+      bases: ["#7fae8e", "#a9c98f", "#6f9e88", "#c5d6a0", "#93c1ac", "#d6d9b0"],
+    },
+  },
+  {
+    id: 6, name: "Starlit Abyss",
+    theme: {
+      bgTop: "#2a2547", bgBottom: "#120f24", fog: "#1e1a38",
+      hemiSky: "#7a74b8", hemiGround: "#221d40", glow: "#b48aff",
+      water: "#6a5ae0", waterGlow: "#a99bff",
+      bases: ["#4a4380", "#5e55a0", "#3d3870", "#6a62a8", "#544d90", "#7a72b8"],
+    },
+  },
 ];
 
 // ---------------------------------------------------------------- helpers
@@ -546,6 +564,184 @@ const SPECS = [
         "6,2": { lift: [0, 1] },
       },
       hm: { "7,2": 1 },
+    },
+  ],
+  // ============ WORLD 6 — Kelp Forest (51-60) ============
+  [
+    { name: "Kelp Gate", size: [7, 5], fish: [{ s: [0, 0], m: "SSEEESSEEEN" }] },
+    {
+      name: "Green Cathedral", size: [7, 5],
+      fish: [{ s: [0, 1], m: "EEESSEEE" }, { s: [5, 0], m: "SSSE" }],
+    },
+    {
+      name: "Drift Locks", size: [7, 5],
+      fish: [{ s: [0, 2], m: "EEEEEENN" }],
+      ov: {
+        "1,2": { slide: { axis: "z", min: 0, max: 2, start: 0 } },
+        "3,2": { slide: { axis: "z", min: 2, max: 4, start: 4 } },
+        "5,2": { slide: { axis: "z", min: 0, max: 2, start: 0 } },
+      },
+    },
+    {
+      name: "Root Stairs", size: [7, 5],
+      fish: [{ s: [0, 3], m: "EEEEENN" }],
+      ov: {
+        "1,3": { ramp: "E" },
+        "2,3": { slide: { axis: "z", min: 2, max: 4, start: 4 } },
+        "3,3": { ramp: "E" },
+        "4,3": { lift: [1, 2] },
+      },
+      hm: { "2,3": 1, "3,3": 1, "5,3": 2, "5,2": 2, "5,1": 2 },
+    },
+    {
+      name: "Twin Canopy", size: [8, 5],
+      fish: [{ s: [0, 1], m: "EEEEEEE" }, { s: [3, 4], m: "NNNEEEE" }],
+      ov: { "5,1": { ramp: "E" }, "6,1": { lift: [0, 1] } },
+      hm: { "7,1": 1 },
+    },
+    { name: "Sea Grove Maze", size: [8, 6], fish: [{ s: [0, 0], m: "EEESSWWSSEEEEENN" }] },
+    {
+      name: "Tide Gardens", size: [8, 6],
+      fish: [{ s: [0, 2], m: "EEEEEEE" }, { s: [3, 0], m: "SSEEEE" }],
+      ov: {
+        "2,2": { slide: { axis: "z", min: 0, max: 2, start: 0 } },
+        "5,2": { slide: { axis: "z", min: 2, max: 4, start: 4 } },
+      },
+    },
+    {
+      name: "Emerald Locks", size: [8, 6],
+      fish: [{ s: [0, 4], m: "EEEENNEEE" }, { s: [4, 0], m: "SSEEE" }],
+      ov: {
+        "2,4": { ramp: "E" },
+        "3,4": { lift: [0, 1] },
+        "4,1": { slide: { axis: "x", min: 4, max: 6, start: 6 } },
+        "6,2": { lift: [0, 1] },
+      },
+      hm: {
+        "4,4": 1, "4,3": 1, "4,2": 1, "5,2": 1, "7,2": 1,
+        "4,1": 1, "4,0": 1,
+      },
+    },
+    {
+      name: "Whispering Reeds", size: [8, 6],
+      fish: [
+        { s: [0, 1], m: "EEEESSSS" },
+        { s: [7, 1], m: "WWWSSSS" },
+        { s: [0, 4], m: "EEEES" },
+      ],
+      ov: { "4,3": { lift: [1, 0] } },
+    },
+    {
+      name: "Heart of the Forest", size: [8, 6],
+      fish: [
+        { s: [0, 2], m: "EEEEEENE" },
+        { s: [6, 4], m: "NNNE" },
+        { s: [2, 0], m: "SSEEEENE" },
+      ],
+      ov: {
+        "4,2": { ramp: "E" },
+        "5,2": { lift: [0, 1] },
+        "6,3": { slide: { axis: "x", min: 4, max: 6, start: 4 } },
+      },
+      hm: { "6,2": 1, "6,1": 1, "7,1": 1, "6,3": 1, "6,4": 1 },
+    },
+  ],
+  // ============ WORLD 7 — Starlit Abyss (61-70) ============
+  [
+    { name: "First Star", size: [8, 6], fish: [{ s: [0, 5], m: "NNEEENNEEEN" }] },
+    {
+      name: "Nebula Currents", size: [8, 6],
+      fish: [{ s: [0, 0], m: "SSSSSEEEE" }, { s: [7, 0], m: "SSSSSWWW" }],
+    },
+    {
+      name: "Gravity Wells", size: [8, 6],
+      fish: [{ s: [0, 3], m: "EEEEEEEN" }],
+      ov: {
+        "1,3": { lift: [1, 0] },
+        "3,3": { slide: { axis: "z", min: 1, max: 3, start: 1 } },
+        "5,3": { lift: [1, 0] },
+        "6,3": { slide: { axis: "z", min: 3, max: 5, start: 5 } },
+      },
+    },
+    {
+      name: "Star Steps", size: [8, 6],
+      fish: [{ s: [0, 4], m: "EEEEEENNN" }],
+      ov: {
+        "1,4": { ramp: "E" },
+        "3,4": { ramp: "E" },
+        "5,4": { slide: { axis: "z", min: 2, max: 4, start: 2 } },
+      },
+      hm: {
+        "2,4": 1, "3,4": 1, "4,4": 2, "5,4": 2, "6,4": 2,
+        "6,3": 2, "6,2": 2, "6,1": 2,
+      },
+    },
+    {
+      name: "Comet Trails", size: [9, 6],
+      fish: [{ s: [0, 1], m: "EEEEEEEE" }, { s: [2, 4], m: "NNNEEEEEE" }],
+      ov: {
+        "4,1": { ramp: "E" },
+        "6,1": { lift: [0, 1] },
+        "2,2": { slide: { axis: "x", min: 0, max: 2, start: 0 } },
+      },
+      hm: { "5,1": 1, "7,1": 1, "8,1": 1 },
+    },
+    { name: "Void Gardens", size: [9, 6], fish: [{ s: [0, 0], m: "EEESSSWWSSEEEEEENNN" }] },
+    {
+      name: "Twin Nebulae", size: [9, 6],
+      fish: [{ s: [0, 2], m: "EEEEEEEE" }, { s: [4, 5], m: "NNNEEEE" }],
+      ov: {
+        "2,2": { ramp: "E" },
+        "5,2": { lift: [0, 1] },
+        "6,2": { ramp: "E" },
+      },
+      hm: {
+        "3,2": 1, "4,2": 1, "6,2": 1, "7,2": 2, "8,2": 2,
+        "4,3": 1, "4,4": 1, "4,5": 1,
+      },
+    },
+    {
+      name: "Starlight Locks", size: [9, 6],
+      fish: [{ s: [0, 3], m: "EEEEEEEE" }, { s: [4, 0], m: "SSSEEEE" }],
+      ov: {
+        "2,3": { slide: { axis: "z", min: 3, max: 5, start: 5 } },
+        "4,2": { slide: { axis: "x", min: 2, max: 4, start: 2 } },
+        "6,3": { slide: { axis: "z", min: 1, max: 3, start: 1 } },
+        "7,3": { lift: [1, 0] },
+      },
+    },
+    {
+      name: "Aurora Cascade", size: [9, 6],
+      fish: [
+        { s: [0, 2], m: "EEEEEEEE" },
+        { s: [4, 0], m: "SSEEEE" },
+        { s: [4, 5], m: "NNNEEEE" },
+      ],
+      ov: {
+        "5,2": { slide: { axis: "z", min: 0, max: 2, start: 0 } },
+        "6,2": { ramp: "E" },
+        "7,2": { lift: [0, 1] },
+      },
+      hm: { "8,2": 1 },
+    },
+    {
+      name: "Zaney's Galaxy", size: [9, 6],
+      fish: [
+        { s: [0, 4], m: "EEEEEEEE" },
+        { s: [5, 1], m: "SSSEEE" },
+        { s: [8, 0], m: "SSSS" },
+      ],
+      ov: {
+        "2,4": { slide: { axis: "z", min: 2, max: 4, start: 2 } },
+        "4,4": { ramp: "E" },
+        "6,4": { ramp: "E" },
+        "7,4": { lift: [1, 2] },
+      },
+      hm: {
+        "5,4": 1, "6,4": 1, "8,4": 2,
+        "5,1": 1, "5,2": 1, "5,3": 1,
+        "8,0": 2, "8,1": 2, "8,2": 2, "8,3": 2,
+      },
     },
   ],
 ];
