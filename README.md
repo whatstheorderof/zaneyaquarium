@@ -63,7 +63,7 @@ Progress (unlocked levels, best stars, sound preference) is saved in `localStora
 ```
 index.html              UI shell + import map (three.js via CDN)
 styles.css              pastel UI styling
-levels/levels.json      51 levels across 5 themed worlds (+ world themes)
+levels/levels.json      71 levels across 7 themed worlds (+ world themes)
 src/
   main.js               bootstrap, game state, screens, main loop
   core/
@@ -96,6 +96,8 @@ scripts/
 | 3 · Golden Shallows | 21–30 | warm sunset gold | ramps, lifts, height puzzles everywhere |
 | 4 · Midnight Lagoon | 31–40 | deep indigo, bioluminescent | big boards, combos, 3-fish finale |
 | 5 · Dream Palace | 41–50 | pink-violet twilight | double-height climbs, drop-lifts, everything at once |
+| 6 · Kelp Forest | 51–60 | deep emerald greens | huge mazes, triple sliders, 3-fish junctions |
+| 7 · Starlit Abyss | 61–70 | dark violet starlight | the hardest: 9-wide boards, drop-lifts + h2 climbs + slider chains |
 
 Each world re-themes the fog, lighting, glow, water colour and tile palette (see `worlds` in `levels.json`).
 
