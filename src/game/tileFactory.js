@@ -109,6 +109,17 @@ export function buildTileGroup(tile, index) {
 
   if (tile.portal) g.add(buildPortal(baseH));
   if (tile.spawn) spinner.add(buildSpawnPool());
+  if (tile.warp != null) {
+    const vortex = buildVortex();
+    vortex.position.y = baseH + 0.09;
+    g.add(vortex);
+    g.userData.vortex = vortex;
+  }
+  if (tile.crack) {
+    const ice = buildCrackOverlay();
+    ice.position.y = baseH + 0.002;
+    g.add(ice);
+  }
   if (tile.lift) decorateLift(g, baseH);
   if (tile.slide) decorateSlider(g, baseH);
   if (tile.rotatable) {
@@ -444,6 +455,85 @@ function buildProp(kind, seed) {
     }
   }
   return g;
+}
+
+// ------------------------------------------------------------- new mechanics
+/** Whirlpool: counter-rotating glowing rings above the water. */
+function buildVortex() {
+  const grp = new THREE.Group();
+  const mats2 = [0xc0a2ff, 0x8a6ae0].map((c) =>
+    new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.8, side: THREE.DoubleSide })
+  );
+  const r1 = new THREE.Mesh(new THREE.TorusGeometry(0.26, 0.03, 8, 28), mats2[0]);
+  const r2 = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.025, 8, 24), mats2[1]);
+  for (const r of [r1, r2]) { r.rotation.x = Math.PI / 2; grp.add(r); }
+  r2.position.y = 0.04;
+  grp.userData.rings = [r1, r2];
+  const eye = new THREE.Mesh(
+    new THREE.CircleGeometry(0.12, 16),
+    new THREE.MeshBasicMaterial({ color: 0x40306e, transparent: true, opacity: 0.85 })
+  );
+  eye.rotation.x = -Math.PI / 2;
+  eye.position.y = 0.01;
+  grp.add(eye);
+  return grp;
+}
+
+/** Cracked-ice overlay for one-use tiles. */
+function buildCrackOverlay() {
+  const c = document.createElement("canvas");
+  c.width = c.height = 128;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = "rgba(225, 244, 255, 0.55)";
+  ctx.fillRect(0, 0, 128, 128);
+  ctx.strokeStyle = "rgba(70, 110, 150, 0.8)";
+  ctx.lineWidth = 2.5;
+  // A web of cracks radiating from the middle.
+  for (let i = 0; i < 7; i++) {
+    ctx.beginPath();
+    let x = 64, y = 64;
+    ctx.moveTo(x, y);
+    const a0 = (i / 7) * Math.PI * 2 + 0.3;
+    for (let s = 0; s < 4; s++) {
+      x += Math.cos(a0 + (Math.random() - 0.5)) * (10 + Math.random() * 12);
+      y += Math.sin(a0 + (Math.random() - 0.5)) * (10 + Math.random() * 12);
+      ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.9, 0.9),
+    new THREE.MeshBasicMaterial({
+      map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false,
+    })
+  );
+  plane.rotation.x = -Math.PI / 2;
+  return plane;
+}
+
+/** A falling water sheet between a high edge and its lower neighbour. */
+export function buildWaterfall(x, z, dirIndex, hTop, hBottom) {
+  const height = (hTop - hBottom) * LEVEL_H + 0.16;
+  const sheet = new THREE.Mesh(
+    new THREE.PlaneGeometry(CHANNEL_W + 0.06, height),
+    new THREE.MeshStandardMaterial({
+      color: 0xbfeeff,
+      emissive: PALETTE.waterGlow,
+      emissiveIntensity: 0.45,
+      transparent: true,
+      opacity: 0.6,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    })
+  );
+  const v = [{ dx: 0, dz: -1 }, { dx: 1, dz: 0 }, { dx: 0, dz: 1 }, { dx: -1, dz: 0 }][dirIndex];
+  sheet.position.set(
+    x + v.dx * 0.5,
+    BASE_H + hBottom * LEVEL_H + height / 2 - 0.03,
+    z + v.dz * 0.5
+  );
+  if (v.dx !== 0) sheet.rotation.y = Math.PI / 2;
+  return sheet;
 }
 
 // ------------------------------------------------------------- power-ups

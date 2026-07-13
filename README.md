@@ -43,6 +43,9 @@ Then import the repo at [vercel.com/new](https://vercel.com/new) (Framework pres
   - tiles on **orange rails** slide along their track
   - tiles with **blue corner bolts** (↕) raise or lower
 - Connect the water channels from the fish to the glowing portal. Heights must match — use **ramps** to climb.
+- **Waterfalls:** water spills over ledges, so fish can ride a drop *down* — but never swim back up.
+- **Whirlpools** come in twin pairs: swim into one, burst out of the other.
+- **Ice tiles** (cracked overlay) crumble away after a single crossing — order your fish wisely.
 - The fish swims home **automatically** the moment a path exists, collecting any **stars** on its route. Route it through the stars before opening a shortcut!
 - The level is complete when **every fish** reaches the portal.
 
@@ -63,7 +66,7 @@ Progress (unlocked levels, best stars, sound preference) is saved in `localStora
 ```
 index.html              UI shell + import map (three.js via CDN)
 styles.css              pastel UI styling
-levels/levels.json      71 levels across 7 themed worlds (+ world themes)
+levels/levels.json      111 levels across 11 themed worlds (+ world themes)
 src/
   main.js               bootstrap, game state, screens, main loop
   core/
@@ -97,7 +100,11 @@ scripts/
 | 4 · Midnight Lagoon | 31–40 | deep indigo, bioluminescent | big boards, combos, 3-fish finale |
 | 5 · Dream Palace | 41–50 | pink-violet twilight | double-height climbs, drop-lifts, everything at once |
 | 6 · Kelp Forest | 51–60 | deep emerald greens | huge mazes, triple sliders, 3-fish junctions |
-| 7 · Starlit Abyss | 61–70 | dark violet starlight | the hardest: 9-wide boards, drop-lifts + h2 climbs + slider chains |
+| 7 · Starlit Abyss | 61–70 | dark violet starlight | 9-wide boards, drop-lifts + h2 climbs + slider chains |
+| 8 · Cascade Falls | 71–80 | airy blue mist | **NEW: waterfalls** — fish ride drops down, never back up |
+| 9 · Whirlpool Depths | 81–90 | deep steel teal | **NEW: whirlpools** — twin vortices teleport the fish |
+| 10 · Frostbite Shoals | 91–100 | pale glacial ice | **NEW: crack tiles** — ice crumbles after one crossing |
+| 11 · The Maelstrom | 101–110 | storm slate + gold | grand finale: every mechanic combined, up to 10×7 boards |
 
 Each world re-themes the fog, lighting, glow, water colour and tile palette (see `worlds` in `levels.json`).
 

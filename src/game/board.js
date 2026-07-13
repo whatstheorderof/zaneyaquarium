@@ -2,11 +2,11 @@
 import * as THREE from "three";
 import { tween, Ease } from "../core/tween.js";
 import {
-  key, DIR_VEC, buildLogicalTiles, findPath,
+  key, DIR_VEC, buildLogicalTiles, findPath, isDrop, edgeHeight, opposite,
 } from "./rules.js";
 import {
   buildTileGroup, buildDecorGroup, buildCoralBridge, buildGroundPlane,
-  LEVEL_H, waterY,
+  buildWaterfall, LEVEL_H, waterY,
 } from "./tileFactory.js";
 
 export class Board {
@@ -18,7 +18,7 @@ export class Board {
     this.portalKey = null;
     this.busy = 0;
     this.undoStack = [];
-    this._animated = { portals: [], rings: [], sprites: [], starTiles: [] };
+    this._animated = { portals: [], rings: [], sprites: [], starTiles: [], vortices: [] };
     this._time = 0;
   }
 
@@ -62,8 +62,53 @@ export class Board {
       if (g.userData.ring) this._animated.rings.push(g.userData.ring);
       if (g.userData.hintSprite) this._animated.sprites.push(g.userData.hintSprite);
       if (g.userData.starMesh) this._animated.starTiles.push(tile);
+      if (g.userData.vortex) this._animated.vortices.push(g.userData.vortex);
       i++;
     }
+
+    // Waterfall sheets wherever water currently spills down a level.
+    this.wfGroup = new THREE.Group();
+    this.group.add(this.wfGroup);
+    this.updateWaterfalls();
+  }
+
+  /** Rebuild waterfall sheets to match the current tile configuration. */
+  updateWaterfalls() {
+    if (!this.wfGroup) return;
+    for (const m of [...this.wfGroup.children]) {
+      this.wfGroup.remove(m);
+      m.geometry?.dispose?.();
+    }
+    for (const tile of this.cells.values()) {
+      for (let d = 0; d < 4; d++) {
+        const nk = key(tile.x + DIR_VEC[d].dx, tile.z + DIR_VEC[d].dz);
+        const nb = this.cells.get(nk);
+        if (nb && isDrop(tile, nb, d)) {
+          this.wfGroup.add(
+            buildWaterfall(tile.x, tile.z, d, edgeHeight(tile, d), edgeHeight(nb, opposite(d)))
+          );
+        }
+      }
+    }
+  }
+
+  /** A fish just left this tile — if it's cracked ice, it crumbles away. */
+  crackAfterLeave(k) {
+    const tile = this.cells.get(k);
+    if (!tile || !tile.crack || tile.cracked) return;
+    tile.cracked = true;
+    this.cells.delete(k);
+    const g = tile.group;
+    this.cb.onSound?.("crumble");
+    tween({
+      dur: 0.9, ease: Ease.inOutCubic,
+      onUpdate: (t) => {
+        g.position.y = -t * 1.6;
+        g.rotation.z = t * 0.35;
+        g.scale.setScalar(1 - t * 0.5);
+      },
+      onDone: () => { g.visible = false; this.updateWaterfalls(); },
+    });
   }
 
   dispose() {
@@ -74,8 +119,9 @@ export class Board {
       });
     }
     this.group = null;
+    this.wfGroup = null;
     this.cells = new Map();
-    this._animated = { portals: [], rings: [], sprites: [], starTiles: [] };
+    this._animated = { portals: [], rings: [], sprites: [], starTiles: [], vortices: [] };
     this.undoStack = [];
     this.busy = 0;
   }
@@ -148,7 +194,7 @@ export class Board {
     tween({
       dur: 0.32, ease: Ease.outBack,
       onUpdate: (k) => { spinner.rotation.y = from + (to - from) * k; },
-      onDone: () => { this.busy--; this.cb.onMove?.(); },
+      onDone: () => { this.busy--; this.updateWaterfalls(); this.cb.onMove?.(); },
     });
     const rec = { kind: "rotate", tile };
     if (record) this.undoStack.push(rec);
@@ -191,7 +237,7 @@ export class Board {
         tile.group.position.x = fx + (nx - fx) * k;
         tile.group.position.z = fz + (nz - fz) * k;
       },
-      onDone: () => { this.busy--; this.cb.onMove?.(); },
+      onDone: () => { this.busy--; this.updateWaterfalls(); this.cb.onMove?.(); },
     });
   }
 
@@ -204,7 +250,7 @@ export class Board {
     tween({
       dur: 0.4, ease: Ease.inOutCubic,
       onUpdate: (k) => { tile.group.position.y = fromY + (targetY - fromY) * k; },
-      onDone: () => { this.busy--; this.cb.onMove?.(); },
+      onDone: () => { this.busy--; this.updateWaterfalls(); this.cb.onMove?.(); },
     });
     const rec = { kind: "lift", tile };
     if (record) this.undoStack.push(rec);
@@ -238,7 +284,7 @@ export class Board {
     tween({
       dur: 0.45, ease: Ease.outBack,
       onUpdate: (kk) => g.scale.setScalar(0.01 + kk * 0.99),
-      onDone: () => { this.busy--; this.cb.onMove?.(); },
+      onDone: () => { this.busy--; this.updateWaterfalls(); this.cb.onMove?.(); },
     });
     return true;
   }
@@ -254,7 +300,7 @@ export class Board {
     tween({
       dur: 0.55, ease: Ease.outBack,
       onUpdate: (k) => { g.position.y = fromY + LEVEL_H * k; },
-      onDone: () => { this.busy--; this.cb.onMove?.(); },
+      onDone: () => { this.busy--; this.updateWaterfalls(); this.cb.onMove?.(); },
     });
     return true;
   }
@@ -296,11 +342,23 @@ export class Board {
         m.position.y = m.userData.baseY + Math.sin(t * 2 + tile.x) * 0.05;
       }
     }
+    for (const v of this._animated.vortices) {
+      const [r1, r2] = v.userData.rings;
+      r1.rotation.z = t * 2.4;
+      r2.rotation.z = -t * 3.4;
+      r1.scale.setScalar(1 + Math.sin(t * 3) * 0.08);
+    }
+    if (this.wfGroup) {
+      for (const m of this.wfGroup.children) {
+        m.material.opacity = 0.55 + Math.sin(t * 5 + m.position.x * 3) * 0.12;
+      }
+    }
   }
 
   /** World position for a fish resting on a tile (used by fish controller). */
   fishPos(k) {
     const tile = this.cells.get(k);
+    if (!tile) return null;
     const v = new THREE.Vector3(tile.x, waterY(tile), tile.z);
     // Ramps: the fish rides the middle of the slope.
     if (tile.ramp != null) v.y += LEVEL_H * 0.5;

@@ -195,6 +195,16 @@ export class AudioEngine {
         break;
       }
       case "click": this._blip(600, 0.07, 0.04, "triangle"); break;
+      case "warp": {
+        this._blip(700, 0.3, 0.06, "sine", 180);
+        setTimeout(() => this._blip(220, 0.3, 0.06, "sine", 820), 220);
+        break;
+      }
+      case "crumble": {
+        this._blip(110, 0.35, 0.05, "square", 45);
+        this._splash();
+        break;
+      }
     }
   }
 

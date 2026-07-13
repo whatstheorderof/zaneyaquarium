@@ -62,23 +62,22 @@ for (const lvl of levels) {
   }
 
   // ---- (b) solved state must connect every fish, stars on paths ----
+  // Fish are checked sequentially: crack (ice) tiles are consumed by the
+  // first fish that crosses them, so later fish must route around.
   {
-    const { cells, portalKey } = buildLogicalTiles(lvl);
-    // Un-scramble rotations.
-    for (const t of cells.values()) t.rot = 0;
-    // Move sliders to goal.
-    const sliders = [...cells.values()].filter((t) => t.slide);
-    for (const t of sliders) {
-      cells.delete(key(t.x, t.z));
-      t.x = t.slide.goal[0];
-      t.z = t.slide.goal[1];
-      cells.set(key(t.x, t.z), t);
-    }
-    // Brute-force lift positions (few lifts per level).
-    const lifts = [...cells.values()].filter((t) => t.lift);
-    const combos = 1 << lifts.length;
+    const nLifts = lvl.tiles.filter((t) => t.lift).length;
+    const combos = 1 << nLifts;
     let solvedPaths = null;
-    for (let c = 0; c < combos; c++) {
+    for (let c = 0; c < combos && !solvedPaths; c++) {
+      const { cells, portalKey } = buildLogicalTiles(lvl);
+      for (const t of cells.values()) t.rot = 0;
+      for (const t of [...cells.values()].filter((t) => t.slide)) {
+        cells.delete(key(t.x, t.z));
+        t.x = t.slide.goal[0];
+        t.z = t.slide.goal[1];
+        cells.set(key(t.x, t.z), t);
+      }
+      const lifts = [...cells.values()].filter((t) => t.lift);
       lifts.forEach((t, i) => { t.li = (c >> i) & 1; });
       const paths = [];
       let ok = true;
@@ -86,8 +85,9 @@ for (const lvl of levels) {
         const p = findPath(cells, key(f.x, f.z), portalKey);
         if (!p) { ok = false; break; }
         paths.push(p);
+        for (const k of p) if (cells.get(k)?.crack) cells.delete(k);
       }
-      if (ok) { solvedPaths = paths; break; }
+      if (ok) solvedPaths = paths;
     }
     if (!solvedPaths) {
       fail(lvl, "NOT SOLVABLE in authored solution state");

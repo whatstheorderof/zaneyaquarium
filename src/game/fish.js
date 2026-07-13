@@ -51,12 +51,7 @@ export class FishController {
   /** Current Push: swim a fish along a partial path (no portal at the end). */
   pushAlong(fish, path) {
     if (fish.state !== "idle" || !path || path.length < 2) return false;
-    fish.state = "swim";
-    fish.partial = true;
-    fish.path = path;
-    fish.seg = 0;
-    fish.segT = 0;
-    this.cb.onSound?.("swim");
+    this._beginSwim(fish, path, true);
     return true;
   }
 
@@ -65,14 +60,19 @@ export class FishController {
     for (const f of this.fishes) {
       if (f.state !== "idle") continue;
       const path = this.board.findPathToPortal(f.key);
-      if (path && path.length > 1) {
-        f.state = "swim";
-        f.path = path;
-        f.seg = 0;
-        f.segT = 0;
-        this.cb.onSound?.("swim");
-      }
+      if (path && path.length > 1) this._beginSwim(f, path, false);
     }
+  }
+
+  _beginSwim(f, path, partial) {
+    f.state = "swim";
+    f.partial = partial;
+    f.path = path;
+    // Cache waypoints now — tiles may crumble away behind the fish.
+    f.points = path.map((k) => this.board.fishPos(k));
+    f.seg = 0;
+    f.segT = 0;
+    this.cb.onSound?.("swim");
   }
 
   update(dt) {
@@ -82,28 +82,37 @@ export class FishController {
       if (f.state === "idle") {
         // Gentle idle bob + wiggle.
         const p = this.board.fishPos(f.key);
+        if (!p) continue; // tile crumbled away beneath us
         f.mesh.position.y = p.y + Math.sin(this._time * 2 + f.bobPhase) * 0.03;
         f.mesh.rotation.y = f.yaw + Math.sin(this._time * 1.4 + f.bobPhase) * 0.15;
         this._wiggleTail(f, 1);
         continue;
       }
       // --- swimming ---
-      const from = this.board.fishPos(f.path[f.seg]);
-      const to = this.board.fishPos(f.path[f.seg + 1]);
-      const segLen = from.distanceTo(to) || 1;
+      const a0 = f.points[f.seg];
+      const b0 = f.points[f.seg + 1];
+      const warpSeg = Math.abs(b0.x - a0.x) + Math.abs(b0.z - a0.z) > 1.5;
+      const dropSeg = !warpSeg && a0.y - b0.y > 0.3;
+      if (f.segT === 0 && warpSeg) this.cb.onSound?.("warp");
+      const segLen = warpSeg ? 1.4 : a0.distanceTo(b0) || 1;
       f.segT += (SWIM_SPEED * dt) / segLen;
 
       if (f.segT >= 1) {
         f.seg++;
         f.segT = 0;
+        const prevKey = f.path[f.seg - 1];
         f.key = f.path[f.seg];
+        if (dropSeg) this.cb.onSound?.("splash");
         if (this.board.collectStar(f.key)) this.cb.onStar?.(f.key);
+        this.board.crackAfterLeave(prevKey); // ice crumbles behind the fish
         if (f.seg >= f.path.length - 1) {
           if (f.partial) {
             // Pushed by a current — rest here, ready to swim on.
             f.partial = false;
             f.state = "idle";
             f.path = null;
+            f.points = null;
+            f.mesh.scale.setScalar(1);
             this.tryStart();
           } else {
             this._arrive(f);
@@ -111,9 +120,31 @@ export class FishController {
           continue;
         }
       }
-      const a = this.board.fishPos(f.path[f.seg]);
-      const b = this.board.fishPos(f.path[Math.min(f.seg + 1, f.path.length - 1)]);
-      const pos = a.clone().lerp(b, f.segT);
+      const a = f.points[f.seg];
+      const b = f.points[Math.min(f.seg + 1, f.path.length - 1)];
+      const t = f.segT;
+      const isWarp = Math.abs(b.x - a.x) + Math.abs(b.z - a.z) > 1.5;
+      const isFall = !isWarp && a.y - b.y > 0.3;
+
+      if (isWarp) {
+        // Whirlpool: spiral shut at one end, spin open at the other.
+        const pos = (t < 0.5 ? a : b).clone();
+        pos.y += Math.sin(t * Math.PI) * 0.18;
+        f.mesh.position.copy(pos);
+        f.mesh.scale.setScalar(Math.max(0.05, Math.abs(Math.cos(Math.PI * t))));
+        f.mesh.rotation.y += dt * 14;
+        this._wiggleTail(f, 2.2);
+        continue;
+      }
+      f.mesh.scale.setScalar(1);
+      const pos = a.clone().lerp(b, t);
+      if (isFall) {
+        // Waterfall: accelerate down the fall, nose first.
+        pos.y = a.y + (b.y - a.y) * t * t;
+        f.mesh.rotation.z = -0.55;
+      } else {
+        f.mesh.rotation.z = Math.sin(this._time * 7) * 0.08;
+      }
       pos.y += Math.sin(this._time * 6 + f.bobPhase) * 0.025;
       f.mesh.position.copy(pos);
 
@@ -124,7 +155,6 @@ export class FishController {
         f.yaw = lerpAngle(f.yaw, targetYaw, Math.min(1, dt * 8));
         f.mesh.rotation.y = f.yaw;
       }
-      f.mesh.rotation.z = Math.sin(this._time * 7) * 0.08;
       this._wiggleTail(f, 2.2);
     }
   }

@@ -153,6 +153,94 @@
           "#7a72b8"
         ]
       }
+    },
+    {
+      "id": 7,
+      "name": "Cascade Falls",
+      "theme": {
+        "bgTop": "#eef7fb",
+        "bgBottom": "#a8cfe0",
+        "fog": "#cfe6f0",
+        "hemiSky": "#f4fbff",
+        "hemiGround": "#9cc4d8",
+        "glow": "#6fd0e8",
+        "water": "#58c8e0",
+        "waterGlow": "#b0eef8",
+        "bases": [
+          "#8fb8d0",
+          "#a8cfe0",
+          "#7ea8c4",
+          "#c0dcea",
+          "#94bfd4",
+          "#d4e6ee"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "Whirlpool Depths",
+      "theme": {
+        "bgTop": "#3f5f82",
+        "bgBottom": "#1d2f47",
+        "fog": "#31496a",
+        "hemiSky": "#8aa4c8",
+        "hemiGround": "#28405e",
+        "glow": "#5fd8d0",
+        "water": "#3fb8c8",
+        "waterGlow": "#8ae8f0",
+        "bases": [
+          "#4f7396",
+          "#5f83a6",
+          "#436685",
+          "#6d90b0",
+          "#57799c",
+          "#7d9cba"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "name": "Frostbite Shoals",
+      "theme": {
+        "bgTop": "#f2f8fc",
+        "bgBottom": "#c2d8ea",
+        "fog": "#dfecf6",
+        "hemiSky": "#ffffff",
+        "hemiGround": "#b4cee2",
+        "glow": "#a8dcff",
+        "water": "#7cc8e8",
+        "waterGlow": "#cceeff",
+        "bases": [
+          "#b8d4e8",
+          "#cfe2f0",
+          "#a4c6de",
+          "#e0edf6",
+          "#c2d8ea",
+          "#93b9d4"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "name": "The Maelstrom",
+      "theme": {
+        "bgTop": "#2e3446",
+        "bgBottom": "#12141f",
+        "fog": "#20263a",
+        "hemiSky": "#7d87a8",
+        "hemiGround": "#252c42",
+        "glow": "#ffd166",
+        "water": "#4a90c8",
+        "waterGlow": "#8ac6f0",
+        "bases": [
+          "#4d5670",
+          "#5d6884",
+          "#414a63",
+          "#6b7692",
+          "#555f7c",
+          "#7c88a6"
+        ]
+      }
     }
   ],
   "levels": [
@@ -10479,6 +10567,6823 @@
         },
         {
           "x": 8,
+          "z": 0,
+          "color": "#8ac6ff"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "name": "First Falls",
+      "world": 7,
+      "size": [
+        7,
+        5
+      ],
+      "par": 5,
+      "steps": [
+        "Water spills over ledges! Fish can ride a waterfall DOWN — but never swim back up."
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "plant"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "name": "Twin Cascades",
+      "world": 7,
+      "size": [
+        7,
+        5
+      ],
+      "par": 7,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "S",
+          "spawn": true,
+          "h": 2
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 2,
+          "star": true
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "tower"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Cascade Court",
+      "world": 7,
+      "size": [
+        7,
+        5
+      ],
+      "par": 10,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "ramp": "E"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "ES",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "SW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "name": "Falls & Locks",
+      "world": 7,
+      "size": [
+        8,
+        6
+      ],
+      "par": 10,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              1,
+              2
+            ]
+          },
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "ES",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "name": "Terrace Gardens",
+      "world": 7,
+      "size": [
+        8,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "name": "Cliffside Run",
+      "world": 7,
+      "size": [
+        8,
+        6
+      ],
+      "par": 17,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "SW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "NE",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "ramp": "E"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "S",
+          "portal": true,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "name": "Split Falls",
+      "world": 7,
+      "size": [
+        8,
+        6
+      ],
+      "par": 13,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "name": "Veil of Water",
+      "world": 7,
+      "size": [
+        9,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 2
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "name": "Rain Stair Relay",
+      "world": 7,
+      "size": [
+        9,
+        6
+      ],
+      "par": 8,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NESW"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "ramp": "E",
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true,
+          "h": 1
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "color": "#f78fb3"
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "color": "#8ac6ff"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "name": "Cascade Palace",
+      "world": 7,
+      "size": [
+        9,
+        6
+      ],
+      "par": 17,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 2,
+            "max": 4,
+            "goal": [
+              3,
+              4
+            ]
+          },
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "NEW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "name": "First Whirl",
+      "world": 8,
+      "size": [
+        7,
+        5
+      ],
+      "par": 2,
+      "steps": [
+        "Whirlpools are twins — dive into one and you burst out of the other!"
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "W",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "E",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "name": "Spiral Steps",
+      "world": 8,
+      "size": [
+        7,
+        5
+      ],
+      "par": 4,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "W",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "S",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "name": "Twin Vortices",
+      "world": 8,
+      "size": [
+        8,
+        5
+      ],
+      "par": 5,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "E",
+          "warp": 1
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "conn": "W",
+          "warp": 2,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "E",
+          "warp": 2
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "name": "Undertow",
+      "world": 8,
+      "size": [
+        8,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "NE",
+          "rot": true,
+          "scr": 2,
+          "star": true
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 1,
+            "max": 3,
+            "goal": [
+              1,
+              3
+            ]
+          }
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "W",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "E",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "SW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "N",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 5,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "name": "Maelstrom Gate",
+      "world": 8,
+      "size": [
+        8,
+        6
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 5,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Eye of the Sea",
+      "world": 8,
+      "size": [
+        8,
+        6
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 2,
+            "max": 4,
+            "goal": [
+              1,
+              4
+            ]
+          },
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "W",
+          "warp": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "E",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "ES",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "name": "Twin Spirals",
+      "world": 8,
+      "size": [
+        9,
+        6
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "E",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "W",
+          "warp": 2,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "E",
+          "warp": 2
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "name": "Deep Current Locks",
+      "world": 8,
+      "size": [
+        9,
+        6
+      ],
+      "par": 5,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 5,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0,
+          "star": true
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "E",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 5,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "name": "Sea of Mirrors",
+      "world": 8,
+      "size": [
+        9,
+        6
+      ],
+      "par": 12,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "E",
+          "warp": 1
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NESW",
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 5,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "color": "#f78fb3"
+        },
+        {
+          "x": 0,
+          "z": 5,
+          "color": "#8ac6ff"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "name": "Whirlpool Crown",
+      "world": 8,
+      "size": [
+        9,
+        6
+      ],
+      "par": 14,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              1,
+              2
+            ]
+          },
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "W",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "E",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 8,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "name": "Thin Ice",
+      "world": 9,
+      "size": [
+        7,
+        5
+      ],
+      "par": 4,
+      "steps": [
+        "Icy tiles crumble after ONE crossing — plan the order of your fish!"
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "name": "Cracked Crossing",
+      "world": 9,
+      "size": [
+        7,
+        5
+      ],
+      "par": 14,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "SW",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "decor": "coral"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "name": "Ice Locks",
+      "world": 9,
+      "size": [
+        8,
+        5
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              2,
+              2
+            ]
+          },
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "S",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "name": "Glacier Steps",
+      "world": 9,
+      "size": [
+        8,
+        5
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "name": "Snowmelt Relay",
+      "world": 9,
+      "size": [
+        8,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 2,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "name": "Fracture Fields",
+      "world": 9,
+      "size": [
+        8,
+        6
+      ],
+      "par": 17,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "SW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "NE",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 5,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "name": "Icefall Vault",
+      "world": 9,
+      "size": [
+        9,
+        6
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "E",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "SW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "NE",
+          "slide": {
+            "axis": "x",
+            "min": 3,
+            "max": 5,
+            "goal": [
+              5,
+              2
+            ]
+          }
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 8,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "name": "Frozen Terraces",
+      "world": 9,
+      "size": [
+        9,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1,
+          "crack": true
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NEW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "name": "Aurora Icefields",
+      "world": 9,
+      "size": [
+        9,
+        6
+      ],
+      "par": 10,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NESW"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              6,
+              2
+            ]
+          },
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "color": "#f78fb3"
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "color": "#8ac6ff"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "name": "Shatterlight Keep",
+      "world": 9,
+      "size": [
+        9,
+        6
+      ],
+      "par": 12,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "S",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 2,
+          "h": 1,
+          "crack": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "W",
+          "warp": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "E",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "SW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "NES",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 5,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 5,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 3,
+          "z": 5,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Storm Approach",
+      "world": 10,
+      "size": [
+        9,
+        6
+      ],
+      "par": 14,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "SW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NE",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              5,
+              2
+            ]
+          },
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "SW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "conn": "N",
+          "portal": true
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Tempest Locks",
+      "world": 10,
+      "size": [
+        9,
+        6
+      ],
+      "par": 10,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 1,
+            "max": 3,
+            "goal": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 5,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 3,
+            "max": 5,
+            "goal": [
+              4,
+              3
+            ]
+          },
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 1,
+            "max": 3,
+            "goal": [
+              6,
+              3
+            ]
+          },
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 4,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 5,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Vortex Falls",
+      "world": 10,
+      "size": [
+        9,
+        6
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 5,
+          "conn": "E",
+          "spawn": true,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "conn": "ES",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 8,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 5,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Eye of the Storm",
+      "world": 10,
+      "size": [
+        10,
+        6
+      ],
+      "par": 9,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "conn": "ESW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              4,
+              2
+            ]
+          }
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 7,
+          "z": 4,
+          "conn": "N",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "EW",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0,
+          "star": true
+        },
+        {
+          "x": 9,
+          "z": 3,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "conn": "N",
+          "spawn": true
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "rock"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 9,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 9,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 2,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Maelstrom Steps",
+      "world": 10,
+      "size": [
+        10,
+        6
+      ],
+      "par": 11,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "ramp": "E"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "ramp": "E",
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3,
+          "h": 2,
+          "crack": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "h": 2,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "ES",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 0,
+            "max": 2,
+            "goal": [
+              7,
+              2
+            ]
+          }
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 9,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 9,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 4,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Twin Tempests",
+      "world": 10,
+      "size": [
+        10,
+        6
+      ],
+      "par": 10,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 0,
+          "z": 5,
+          "conn": "NE",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 2,
+          "z": 5,
+          "conn": "W",
+          "warp": 1
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "ES",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 9,
+          "z": 2,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 9,
+          "z": 5,
+          "conn": "W",
+          "spawn": true
+        },
+        {
+          "x": 8,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 7,
+          "z": 5,
+          "conn": "E",
+          "warp": 2
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "N",
+          "warp": 2
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 9,
+          "z": 5,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Deluge Vault",
+      "world": 10,
+      "size": [
+        10,
+        7
+      ],
+      "par": 17,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 1,
+            "max": 3,
+            "goal": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "NESW",
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "ramp": "E"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "EW",
+          "lift": [
+            0,
+            1
+          ],
+          "li": 0
+        },
+        {
+          "x": 9,
+          "z": 3,
+          "conn": "W",
+          "portal": true,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "conn": "S",
+          "spawn": true
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 6,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 5,
+          "z": 5,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 9,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "decor": "coral"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 2,
+          "z": 4,
+          "decor": "rock"
+        },
+        {
+          "x": 3,
+          "z": 4,
+          "decor": "coral"
+        },
+        {
+          "x": 4,
+          "z": 4,
+          "decor": "plant"
+        },
+        {
+          "x": 6,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "color": "#f78fb3"
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "color": "#8ac6ff"
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Riptide Maze",
+      "world": 10,
+      "size": [
+        10,
+        7
+      ],
+      "par": 24,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 0,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "conn": "SW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 2,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3,
+          "star": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "NW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "ES",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 1,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 1,
+          "z": 5,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 6,
+          "conn": "NE",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 3,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true
+        },
+        {
+          "x": 4,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 7,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 6,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 5,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 8,
+          "z": 4,
+          "conn": "S",
+          "portal": true
+        },
+        {
+          "x": 5,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 9,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 5,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 0,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 0,
+          "color": "#ffab4a"
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Stormlight Spiral",
+      "world": 10,
+      "size": [
+        10,
+        7
+      ],
+      "par": 6,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 1,
+          "conn": "E",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 1,
+          "z": 1,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 1
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "conn": "W",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 5,
+          "z": 5,
+          "conn": "NE",
+          "warp": 1,
+          "star": true
+        },
+        {
+          "x": 6,
+          "z": 5,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 7,
+          "z": 5,
+          "conn": "W",
+          "warp": 2
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "N",
+          "warp": 2,
+          "star": true
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "conn": "ES",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 9,
+          "z": 1,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "conn": "SW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 5,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "decor": "arch"
+        },
+        {
+          "x": 3,
+          "z": 0,
+          "decor": "tower"
+        },
+        {
+          "x": 4,
+          "z": 0,
+          "decor": "rock"
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 9,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "decor": "shell"
+        },
+        {
+          "x": 4,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "tower"
+        },
+        {
+          "x": 9,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "decor": "coral"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "plant"
+        },
+        {
+          "x": 0,
+          "z": 4,
+          "decor": "shell"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 1,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 3,
+          "z": 3,
+          "color": "#f78fb3"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Zaney's Maelstrom",
+      "world": 10,
+      "size": [
+        10,
+        7
+      ],
+      "par": 20,
+      "tiles": [
+        {
+          "x": 0,
+          "z": 3,
+          "conn": "E",
+          "spawn": true,
+          "h": 2
+        },
+        {
+          "x": 1,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "h": 2
+        },
+        {
+          "x": 2,
+          "z": 3,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "h": 1
+        },
+        {
+          "x": 3,
+          "z": 1,
+          "conn": "EW",
+          "slide": {
+            "axis": "z",
+            "min": 1,
+            "max": 3,
+            "goal": [
+              3,
+              3
+            ]
+          },
+          "h": 1
+        },
+        {
+          "x": 4,
+          "z": 3,
+          "conn": "W",
+          "warp": 1,
+          "h": 1
+        },
+        {
+          "x": 7,
+          "z": 1,
+          "conn": "NE",
+          "warp": 1,
+          "h": 1,
+          "star": true
+        },
+        {
+          "x": 8,
+          "z": 1,
+          "conn": "SW",
+          "rot": true,
+          "scr": 2
+        },
+        {
+          "x": 8,
+          "z": 2,
+          "conn": "NS",
+          "lift": [
+            1,
+            0
+          ],
+          "li": 0
+        },
+        {
+          "x": 8,
+          "z": 3,
+          "conn": "NES",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 9,
+          "z": 3,
+          "conn": "W",
+          "portal": true
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "conn": "E",
+          "spawn": true
+        },
+        {
+          "x": 1,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 2,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 3,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 4,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 5,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 6,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3,
+          "crack": true,
+          "star": true
+        },
+        {
+          "x": 7,
+          "z": 6,
+          "conn": "EW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 6,
+          "conn": "NW",
+          "rot": true,
+          "scr": 3
+        },
+        {
+          "x": 8,
+          "z": 5,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 8,
+          "z": 4,
+          "conn": "NS",
+          "rot": true,
+          "scr": 1
+        },
+        {
+          "x": 7,
+          "z": 0,
+          "conn": "S",
+          "spawn": true,
+          "h": 1
+        },
+        {
+          "x": 0,
+          "z": 0,
+          "decor": "coral"
+        },
+        {
+          "x": 2,
+          "z": 0,
+          "decor": "plant"
+        },
+        {
+          "x": 9,
+          "z": 0,
+          "decor": "shell"
+        },
+        {
+          "x": 2,
+          "z": 1,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 1,
+          "decor": "tower"
+        },
+        {
+          "x": 0,
+          "z": 2,
+          "decor": "rock"
+        },
+        {
+          "x": 1,
+          "z": 2,
+          "decor": "coral"
+        },
+        {
+          "x": 6,
+          "z": 2,
+          "decor": "plant"
+        },
+        {
+          "x": 7,
+          "z": 2,
+          "decor": "shell"
+        },
+        {
+          "x": 9,
+          "z": 2,
+          "decor": "arch"
+        },
+        {
+          "x": 5,
+          "z": 3,
+          "decor": "tower"
+        },
+        {
+          "x": 7,
+          "z": 3,
+          "decor": "rock"
+        }
+      ],
+      "fish": [
+        {
+          "x": 0,
+          "z": 3,
+          "color": "#ffab4a"
+        },
+        {
+          "x": 0,
+          "z": 6,
+          "color": "#f78fb3"
+        },
+        {
+          "x": 7,
           "z": 0,
           "color": "#8ac6ff"
         }

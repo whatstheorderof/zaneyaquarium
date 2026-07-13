@@ -45,14 +45,45 @@ export function edgeHeight(tile, d) {
 
 /**
  * Are two adjacent tiles connected through direction d (from a → b)?
- * Requires: both edges open, and matching water heights at the seam.
+ * Requires both edges open. Equal heights connect both ways; a higher edge
+ * flowing into a lower one is a WATERFALL — a one-way drop (a → b only).
  */
 export function connected(a, b, d) {
   if (!a || !b) return false;
   const od = opposite(d);
   if (!(effectiveConn(a) & bit(d))) return false;
   if (!(effectiveConn(b) & bit(od))) return false;
-  return edgeHeight(a, d) === edgeHeight(b, od);
+  return edgeHeight(a, d) >= edgeHeight(b, od);
+}
+
+/** Is a → b specifically a waterfall drop (for visuals/animation)? */
+export function isDrop(a, b, d) {
+  return connected(a, b, d) && edgeHeight(a, d) > edgeHeight(b, opposite(d));
+}
+
+/** Map warp-pair id → [cellKey, cellKey] for the current board. */
+export function warpPairs(cells) {
+  const map = new Map();
+  for (const [k, t] of cells) {
+    if (t.warp == null) continue;
+    if (!map.has(t.warp)) map.set(t.warp, []);
+    map.get(t.warp).push(k);
+  }
+  return map;
+}
+
+function* neighborKeys(cells, tile, warps) {
+  for (let d = 0; d < 4; d++) {
+    const nk = key(tile.x + DIR_VEC[d].dx, tile.z + DIR_VEC[d].dz);
+    const nb = cells.get(nk);
+    if (nb && connected(tile, nb, d)) yield nk;
+  }
+  // Whirlpool: teleports to its twin regardless of edges or height.
+  if (tile.warp != null) {
+    const pair = warps.get(tile.warp) || [];
+    const self = key(tile.x, tile.z);
+    for (const pk of pair) if (pk !== self) yield pk;
+  }
 }
 
 /**
@@ -61,17 +92,15 @@ export function connected(a, b, d) {
  */
 export function findPath(cells, startKey, goalKey) {
   if (startKey === goalKey) return [startKey];
+  const warps = warpPairs(cells);
   const prev = new Map([[startKey, null]]);
   const queue = [startKey];
   while (queue.length) {
     const k = queue.shift();
     const tile = cells.get(k);
     if (!tile) continue;
-    for (let d = 0; d < 4; d++) {
-      const nk = key(tile.x + DIR_VEC[d].dx, tile.z + DIR_VEC[d].dz);
+    for (const nk of neighborKeys(cells, tile, warps)) {
       if (prev.has(nk)) continue;
-      const nb = cells.get(nk);
-      if (!nb || !connected(tile, nb, d)) continue;
       prev.set(nk, k);
       if (nk === goalKey) {
         const path = [nk];
@@ -90,17 +119,15 @@ export function findPath(cells, startKey, goalKey) {
  * Returns Map<key, prevKey> (BFS tree, startKey → null).
  */
 export function reachableFrom(cells, startKey) {
+  const warps = warpPairs(cells);
   const prev = new Map([[startKey, null]]);
   const queue = [startKey];
   while (queue.length) {
     const k = queue.shift();
     const tile = cells.get(k);
     if (!tile) continue;
-    for (let d = 0; d < 4; d++) {
-      const nk = key(tile.x + DIR_VEC[d].dx, tile.z + DIR_VEC[d].dz);
+    for (const nk of neighborKeys(cells, tile, warps)) {
       if (prev.has(nk)) continue;
-      const nb = cells.get(nk);
-      if (!nb || !connected(tile, nb, d)) continue;
       prev.set(nk, k);
       queue.push(nk);
     }
@@ -126,6 +153,9 @@ export function buildLogicalTiles(levelData) {
       li: t.li || 0,
       slide: t.slide || null,
       slideDir: 1,
+      warp: t.warp ?? null,
+      crack: !!t.crack,
+      cracked: false,
       portal: !!t.portal,
       spawn: !!t.spawn,
       star: !!t.star,
