@@ -25,10 +25,12 @@ export function createScene(canvas) {
   camera.lookAt(0, 0, 0);
 
   let viewSize = 5.5;
-  let zoom = 1; // < 1 zooms in (used by the splash to fill the screen)
+  let zoom = 1; // < 1 zooms in (splash framing + user pinch/wheel zoom)
+  let bw = 5, bh = 5; // current board footprint
   let center = new THREE.Vector3(0, 0, 0);
 
   function frame(boardW, boardH) {
+    bw = boardW; bh = boardH;
     center = new THREE.Vector3((boardW - 1) / 2, 0.3, (boardH - 1) / 2);
     const span = Math.max(boardW, boardH);
     viewSize = span * 0.72 + 1.7;
@@ -42,9 +44,16 @@ export function createScene(canvas) {
     const h = canvas.clientHeight || window.innerHeight;
     renderer.setSize(w, h, false);
     const aspect = w / h;
-    // Fit board in both portrait and landscape.
-    const v = viewSize * zoom;
-    const vs = aspect < 1 ? v / Math.max(aspect, 0.52) : v;
+    let vs;
+    if (aspect < 1) {
+      // Portrait: fit the board's projected width tightly so it fills the phone.
+      const halfW = (bw + bh) * 0.354 + 0.9;
+      const vertNeed = (bw + bh) * 0.205 + 2.2;
+      vs = Math.max(halfW / aspect, vertNeed);
+    } else {
+      vs = viewSize;
+    }
+    vs *= zoom;
     camera.left = -vs * aspect;
     camera.right = vs * aspect;
     camera.top = vs;
@@ -122,6 +131,7 @@ export function createScene(canvas) {
     resize, update, setTheme,
     render: () => renderer.render(scene, camera),
     setZoom: (z) => { zoom = z; resize(); },
+    zoomBy: (f) => { zoom = Math.min(1.6, Math.max(0.45, zoom * f)); resize(); },
   };
 }
 

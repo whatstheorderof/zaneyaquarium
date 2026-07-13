@@ -110,6 +110,8 @@ async function boot() {
     },
     onSoundTouch: () => audio.ensure(),
     onPowerup: (name) => togglePowerup(name),
+    onZoomIn: () => view.zoomBy(0.85),
+    onZoomOut: () => view.zoomBy(1.18),
   });
   ui.setSoundIcon(audio.muted);
 
@@ -131,7 +133,7 @@ async function boot() {
       ui.setMoves(state.moves, state.level.par);
       advanceTutorial();
     }
-  });
+  }, (f) => view.zoomBy(f)); // pinch / wheel zoom
 
   // --------- power-ups ---------
   function togglePowerup(name) {

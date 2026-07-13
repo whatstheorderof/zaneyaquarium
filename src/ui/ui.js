@@ -10,6 +10,8 @@ export class UI {
     $("btn-map-back").onclick = () => handlers.onOpenMenu?.();
     $("btn-back").onclick = () => handlers.onOpenMap?.();
     $("btn-restart").onclick = () => handlers.onRestart?.();
+    $("btn-zoom-in").onclick = () => handlers.onZoomIn?.();
+    $("btn-zoom-out").onclick = () => handlers.onZoomOut?.();
     $("btn-undo").onclick = () => handlers.onUndo?.();
     $("btn-hint").onclick = () => handlers.onHint?.();
     $("btn-sound").onclick = () => handlers.onToggleSound?.();
