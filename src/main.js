@@ -147,7 +147,7 @@ async function boot() {
       ui.setMoves(state.moves, state.level.par);
       advanceTutorial();
     }
-  }, (f) => view.zoomBy(f)); // pinch / wheel zoom
+  }, (f) => { if (state.screen === "game") view.zoomBy(f); }); // zoom only in-game
 
   // --------- power-ups ---------
   function togglePowerup(name) {
@@ -226,16 +226,21 @@ async function boot() {
     document.getElementById("app").classList.add("splash-bg");
     fish.dispose();
     board.dispose();
-    if (!splash) splash = buildSplash(view.boardGroup);
     view.frame(5, 4);
     layoutSplash();
   }
 
-  /** Splash composition: zoomed-in scene; on portrait the cube sits mid-screen. */
+  /** Splash composition: zoomed-in scene; on portrait the whole column is
+   *  shortened + shifted so it sits centred between the title and buttons. */
   function layoutSplash() {
-    if (!splash) return;
+    if (state.screen !== "menu") return;
     const portrait = window.innerHeight > window.innerWidth;
-    splash.group.position.set(portrait ? 2.2 : 0, 0, portrait ? 2.2 : 0);
+    const wantY = portrait ? 2.5 : 3.3; // cube float height
+    if (!splash || splash.cubeY !== wantY) {
+      splash?.dispose();
+      splash = buildSplash(view.boardGroup, wantY);
+    }
+    splash.group.position.set(portrait ? 2.3 : 0, 0, portrait ? 2.3 : 0);
     splash.group.scale.setScalar(portrait ? 0.95 : 1);
     view.setZoom(portrait ? 0.85 : 0.72); // fill the frame, less empty dark
   }

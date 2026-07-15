@@ -5,10 +5,12 @@ import * as THREE from "three";
 import { buildFish } from "../game/tileFactory.js";
 
 const CUBE_X = 3.1, CUBE_Z = 1.4;   // beam axis (right of centre)
-const CUBE_Y = 3.3;                  // cube centre height
 const CUBE_SIZE = 1.7;
 
-export function buildSplash(parent) {
+/** cubeY controls how high the cube floats — lower on portrait screens so
+ *  the whole column fits between the title and the buttons. */
+export function buildSplash(parent, cubeY = 3.3) {
+  const CUBE_Y = cubeY;
   const group = new THREE.Group();
   parent.add(group);
 
@@ -139,7 +141,7 @@ export function buildSplash(parent) {
       r: inCube ? 0.15 + Math.random() * 0.45 : 0.15 + Math.random() * 0.5,
       y0: inCube
         ? CUBE_Y - 0.45 + Math.random() * 0.9
-        : 0.55 + Math.random() * (beamH - 1.4),
+        : 0.55 + Math.random() * Math.max(0.35, beamH - 1.4),
       yAmp: inCube ? 0.12 : 0.2 + Math.random() * 0.3,
       speed: (0.4 + Math.random() * 0.7) * (Math.random() < 0.5 ? 1 : -1),
       ySpeed: 0.3 + Math.random() * 0.5,
@@ -151,6 +153,7 @@ export function buildSplash(parent) {
   let time = 0;
   return {
     group,
+    cubeY,
     update(dt) {
       time += dt;
       cube.position.y = CUBE_Y + Math.sin(time * 0.7) * 0.07;
