@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Solve Expert Killer Sudoku Without Guessing | Zaney Sudoku</title>
+<meta name="description" content="The systematic approach to expert killer sudoku: the 45 audit opening, exclusion-first cage analysis, cross-cage pressure, and the bookkeeping that scales to 6-cell cages.">
+<meta name="theme-color" content="#F6F5EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12141C" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="canonical" href="https://zaneysudoku.com/expert-killer-sudoku-guide.html">
+<meta property="og:title" content="How to Solve Expert Killer Sudoku Without Guessing | Zaney Sudoku">
+<meta property="og:description" content="The systematic approach to expert killer sudoku: the 45 audit opening, exclusion-first cage analysis, cross-cage pressure, and the bookkeeping that scales to 6-cell cages.">
+<meta property="og:url" content="https://zaneysudoku.com/expert-killer-sudoku-guide.html">
+<meta property="og:site_name" content="Zaney Sudoku">
+<meta property="og:image" content="https://zaneysudoku.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Zaney Sudoku — killer sudoku with zero dead ends">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="48x48" href="icon-48.png">
+<!-- Google AdSense Auto ads: after approval, uncomment and set your publisher ID.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+<script>try{const t=localStorage.getItem("zs_theme");if(t)document.documentElement.dataset.theme=JSON.parse(t);else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("fonts/bricolage.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("fonts/inter.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{--paper:#F6F5EF;--surface:#FFFFFF;--ink:#20232E;--muted:#6B6F7F;--line:#DBD9CE;
+--violet:#5847E0;--hl:#FFD23F;--radius:14px;
+--shadow:0 1px 2px rgba(20,22,32,.06),0 8px 24px rgba(20,22,32,.06);}
+[data-theme="dark"]{--paper:#12141C;--surface:#1B1E2A;--ink:#ECEDF3;--muted:#9BA0B2;
+--line:#2C303F;--violet:#8B7DFF;--hl:#FFD23F;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--paper);
+color:var(--ink);line-height:1.6;min-height:100dvh;display:flex;flex-direction:column}
+a{color:var(--violet)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+button,a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,4vw,32px) 10px;
+max-width:900px;margin:0 auto;width:100%}
+.mark{position:relative;display:inline-block;border:2.5px dashed var(--ink);border-radius:12px;
+padding:7px 16px 8px;font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(18px,4vw,24px);letter-spacing:.5px;line-height:1;text-decoration:none;color:var(--ink)}
+.mark em{font-style:normal;color:var(--violet)}
+.mark .sum{position:absolute;top:-11px;left:12px;background:var(--hl);color:#20232E;
+font-family:Inter;font-size:12px;font-weight:700;padding:1px 7px;border-radius:7px}
+nav{margin-left:auto;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);font-weight:600;font-size:13.5px;padding:7px 11px;border-radius:10px}
+nav a:hover{color:var(--violet)}
+#themeBtn{font-size:17px;padding:6px 10px;border-radius:10px}
+main{flex:1;width:100%;max-width:720px;margin:0 auto;padding:14px clamp(16px,4vw,32px) 50px}
+article h1{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(27px,5.6vw,38px);line-height:1.1;margin:18px 0 6px}
+.lede{font-size:16.5px;color:var(--muted);margin-bottom:22px}
+article h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:700;font-size:22px;margin:32px 0 10px}
+article h3{font-weight:700;font-size:16.5px;margin:22px 0 6px}
+article p,article li{font-size:15.5px}
+article ul,article ol{padding-left:22px;display:grid;gap:7px;margin:8px 0}
+.tip{background:var(--surface);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;margin:14px 0;font-size:14.5px}
+.tip b{color:var(--violet)}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--surface);
+border-radius:10px;overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+@media (max-width:420px){table{font-size:12.5px}th,td{padding:7px 8px}}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td.u{font-weight:700;color:var(--violet)}
+.combo{white-space:nowrap}
+.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+font-weight:700;padding:12px 22px;border-radius:99px;margin:26px 0 6px}
+.cta:hover{background:var(--violet)}
+.crumbs{font-size:13px;color:var(--muted);margin-top:8px}
+.crumbs a{color:var(--muted)}
+footer{padding:26px 20px calc(34px + env(safe-area-inset-bottom));text-align:center;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  header,footer,.cta,.crumbs,#themeBtn,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  table{box-shadow:none;border:1px solid #999}
+  th,td{border-bottom:1px solid #ccc}
+  article h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="index.html">ZANEY <em>SUDOKU</em><span class="sum">45</span></a>
+  <nav>
+    <a href="index.html#/daily">Play</a>
+    <a href="killer-sudoku-rules.html">Rules</a>
+    <a href="killer-sudoku-combinations.html">Combinations</a>
+    <a href="killer-sudoku-strategy.html">Strategy</a>
+    <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9680;</button>
+  </nav>
+</header>
+<main>
+<article>
+
+<div class="crumbs"><a href="index.html#/daily">Zaney Sudoku</a> / Expert guide</div>
+<h1>How to solve expert killer sudoku (without guessing)</h1>
+<p class="lede">Expert grids use big, information-poor cages that shrug off beginner techniques. Here's the systematic approach that cracks them &mdash; and why guessing is never part of it.</p>
+
+<h2>Why expert feels different</h2>
+<p>Easy puzzles are built from small cages: 2-cell cages have at most a handful of combinations, so information is everywhere. Expert puzzles use 4, 5 and 6-cell cages whose sums admit dozens of combinations. Individually they tell you almost nothing &mdash; the information only appears when you combine them.</p>
+
+<h2>The opening: arithmetic before anything</h2>
+<p>On an expert grid, do not start by staring at cages. Start with a full <b>45 audit</b>: for all nine boxes, all three bands and all three stacks, total the cages inside and note every innie and outie. On most expert puzzles this yields one to three placed digits or pinned sums &mdash; and those are the loose threads the whole puzzle unravels from. The mechanics are covered in the <a href="killer-sudoku-strategy.html">strategy guide</a>.</p>
+
+<h2>The middle game: exclusions over combinations</h2>
+<p>Don't try to enumerate a 5-cell cage summing 26 &mdash; there are too many options to hold. Instead extract what it <em>excludes</em> and what it <em>requires</em>:</p>
+<ul>
+<li>A 5-cell cage summing 35 is missing four digits that total 10 &mdash; and the only four digits that total 10 are 1, 2, 3 and 4. The cage is exactly {5,6,7,8,9}, solved before you've placed a thing. Reason about the missing digits, not the present ones.</li>
+<li>A 4-cell cage summing 12 contains 1 and 2 for certain (its only combinations are 1+2+3+6 and 1+2+4+5), and never anything above 6.</li>
+<li>Low sums exclude high digits, high sums exclude low digits &mdash; and every exclusion is a pencil-mark deletion somewhere.</li>
+</ul>
+
+<h2>Cross-cage pressure</h2>
+<p>Expert progress comes from pairs of constraints colliding. Two cages needing a 9 in the same row; a cage's only combinations all placing its 1 in the same box; an innie sum that rules out half of a neighbouring cage's options. After every placement, re-ask: <em>which cage just got smaller, and what does its new remainder exclude?</em></p>
+
+<h2>Bookkeeping that actually scales</h2>
+<ul>
+<li><b>Full pencil marks, always.</b> Use Auto notes to seed candidates, then let placements prune them.</li>
+<li><b>Paint your deductions.</b> Colour the cells of a cage you've partially cracked so the constraint stays visible while you work elsewhere.</li>
+<li><b>Re-run the 45 audit</b> whenever you stall. Remainders change; regions that gave nothing an hour ago give digits now.</li>
+</ul>
+
+<h2>Why you never need to guess</h2>
+<p>Every puzzle on Zaney Sudoku is machine-verified to have exactly one solution before it's dealt. That's not just quality control &mdash; it's strategic information: a forced logical path always exists. If you're contemplating a guess, the honest translation is "there's a deduction I haven't found", and nine times out of ten it's a multi-region 45 you haven't set up yet.</p>
+
+<a class="cta" href="index.html#/browse">Face an Expert puzzle &rarr;</a>
+
+</article>
+</main>
+<footer>
+  Zaney Sudoku &middot; <a href="index.html#/daily">daily puzzle</a> &middot;
+  <a href="killer-sudoku-rules.html">rules</a> &middot;
+  <a href="killer-sudoku-combinations.html">combinations</a> &middot;
+  <a href="killer-sudoku-strategy.html">strategy</a> &middot;
+  <a href="about.html">about</a> &middot;
+  <a href="terms.html">terms</a> &middot;
+  <a href="privacy.html">privacy</a>
+</footer>
+<script>
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme==="dark"?"light":"dark";
+  document.documentElement.dataset.theme=cur;
+  try{localStorage.setItem("zs_theme",JSON.stringify(cur));}catch(e){}
+});
+</script>
+</body>
+</html>

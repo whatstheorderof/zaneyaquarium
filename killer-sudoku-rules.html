@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Play Killer Sudoku — Rules & Beginner's Guide | Zaney Sudoku</title>
+<meta name="description" content="Learn killer sudoku in ten minutes: the three rules, your exact first moves on an empty grid, pencil-mark technique, and the five mistakes every beginner makes.">
+<meta name="theme-color" content="#F6F5EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12141C" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="canonical" href="https://zaneysudoku.com/killer-sudoku-rules.html">
+<meta property="og:title" content="How to Play Killer Sudoku — Rules & Beginner's Guide | Zaney Sudoku">
+<meta property="og:description" content="Learn killer sudoku in ten minutes: the three rules, your exact first moves on an empty grid, pencil-mark technique, and the five mistakes every beginner makes.">
+<meta property="og:url" content="https://zaneysudoku.com/killer-sudoku-rules.html">
+<meta property="og:site_name" content="Zaney Sudoku">
+<meta property="og:image" content="https://zaneysudoku.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Zaney Sudoku — killer sudoku with zero dead ends">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="48x48" href="icon-48.png">
+<!-- Google AdSense Auto ads: after approval, uncomment and set your publisher ID.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+<script>try{const t=localStorage.getItem("zs_theme");if(t)document.documentElement.dataset.theme=JSON.parse(t);else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("fonts/bricolage.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("fonts/inter.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{--paper:#F6F5EF;--surface:#FFFFFF;--ink:#20232E;--muted:#6B6F7F;--line:#DBD9CE;
+--violet:#5847E0;--hl:#FFD23F;--radius:14px;
+--shadow:0 1px 2px rgba(20,22,32,.06),0 8px 24px rgba(20,22,32,.06);}
+[data-theme="dark"]{--paper:#12141C;--surface:#1B1E2A;--ink:#ECEDF3;--muted:#9BA0B2;
+--line:#2C303F;--violet:#8B7DFF;--hl:#FFD23F;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--paper);
+color:var(--ink);line-height:1.6;min-height:100dvh;display:flex;flex-direction:column}
+a{color:var(--violet)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+button,a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,4vw,32px) 10px;
+max-width:900px;margin:0 auto;width:100%}
+.mark{position:relative;display:inline-block;border:2.5px dashed var(--ink);border-radius:12px;
+padding:7px 16px 8px;font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(18px,4vw,24px);letter-spacing:.5px;line-height:1;text-decoration:none;color:var(--ink)}
+.mark em{font-style:normal;color:var(--violet)}
+.mark .sum{position:absolute;top:-11px;left:12px;background:var(--hl);color:#20232E;
+font-family:Inter;font-size:12px;font-weight:700;padding:1px 7px;border-radius:7px}
+nav{margin-left:auto;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);font-weight:600;font-size:13.5px;padding:7px 11px;border-radius:10px}
+nav a:hover{color:var(--violet)}
+#themeBtn{font-size:17px;padding:6px 10px;border-radius:10px}
+main{flex:1;width:100%;max-width:720px;margin:0 auto;padding:14px clamp(16px,4vw,32px) 50px}
+article h1{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(27px,5.6vw,38px);line-height:1.1;margin:18px 0 6px}
+.lede{font-size:16.5px;color:var(--muted);margin-bottom:22px}
+article h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:700;font-size:22px;margin:32px 0 10px}
+article h3{font-weight:700;font-size:16.5px;margin:22px 0 6px}
+article p,article li{font-size:15.5px}
+article ul,article ol{padding-left:22px;display:grid;gap:7px;margin:8px 0}
+.tip{background:var(--surface);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;margin:14px 0;font-size:14.5px}
+.tip b{color:var(--violet)}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--surface);
+border-radius:10px;overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+@media (max-width:420px){table{font-size:12.5px}th,td{padding:7px 8px}}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td.u{font-weight:700;color:var(--violet)}
+.combo{white-space:nowrap}
+.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+font-weight:700;padding:12px 22px;border-radius:99px;margin:26px 0 6px}
+.cta:hover{background:var(--violet)}
+.crumbs{font-size:13px;color:var(--muted);margin-top:8px}
+.crumbs a{color:var(--muted)}
+footer{padding:26px 20px calc(34px + env(safe-area-inset-bottom));text-align:center;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  header,footer,.cta,.crumbs,#themeBtn,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  table{box-shadow:none;border:1px solid #999}
+  th,td{border-bottom:1px solid #ccc}
+  article h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="index.html">ZANEY <em>SUDOKU</em><span class="sum">45</span></a>
+  <nav>
+    <a href="index.html#/daily">Play</a>
+    <a href="killer-sudoku-rules.html">Rules</a>
+    <a href="killer-sudoku-combinations.html">Combinations</a>
+    <a href="killer-sudoku-strategy.html">Strategy</a>
+    <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9680;</button>
+  </nav>
+</header>
+<main>
+<article>
+
+<div class="crumbs"><a href="index.html#/daily">Zaney Sudoku</a> / How to play</div>
+<h1>How to play killer sudoku: a complete beginner's guide</h1>
+<p class="lede">Killer sudoku looks intimidating &mdash; an empty grid, no starting digits, just dashed boxes with little numbers. Ten minutes with this guide and you'll wonder why you ever found it scary.</p>
+
+<h2>What is killer sudoku?</h2>
+<p>Killer sudoku is a cross between sudoku and kakuro. The grid is standard 9&times;9 sudoku, but instead of given digits, the grid is divided into outlined regions called <b>cages</b>. The small number in each cage's corner tells you what the digits inside it must add up to.</p>
+<p>Despite the name (a translation of the Japanese <em>satan namba</em> era of fiendish variants), most killer sudokus are no harder than a decent newspaper sudoku &mdash; the sums give you information a normal sudoku doesn't have.</p>
+
+<h2>The three rules</h2>
+<ol>
+<li><b>Sudoku rules apply.</b> Every row, every column, and every 3&times;3 box contains the digits 1&ndash;9 exactly once.</li>
+<li><b>Cage sums must match.</b> The digits inside each dashed cage add up to the number printed in its corner.</li>
+<li><b>No repeats in a cage.</b> A digit can't appear twice inside the same cage, even when the cage snakes across boxes and a repeat wouldn't break rule 1.</li>
+</ol>
+
+<h2>Your first moves: a walkthrough</h2>
+<p>Facing an empty grid, here's the exact order to attack it:</p>
+<h3>1. Hunt the forced cages</h3>
+<p>Some cage sums can only be made one way. A 2-cell cage summing <b>3</b> must be 1+2. Summing <b>17</b>? That's 8+9, no other option. A 3-cell cage totalling <b>24</b> is always 7+8+9. Scan the whole grid for these before doing anything else and pencil-mark the digits. (The <a href="killer-sudoku-combinations.html">full cheat sheet of forced combinations</a> lists every one.)</p>
+<h3>2. Fill the single-cell cages</h3>
+<p>Easier puzzles include cages of just one cell &mdash; the sum <em>is</em> the digit. Free squares. Take them.</p>
+<h3>3. Let sudoku decide the order</h3>
+<p>Knowing a cage holds 8 and 9 is half the battle; normal sudoku logic settles which cell gets which. If one of the cage's cells shares a column with an existing 9, the 9 goes in the other cell.</p>
+<h3>4. Add the cages up against 45</h3>
+<p>Here's the trick that unlocks everything: the digits 1&ndash;9 sum to <b>45</b>, so every row, column and 3&times;3 box totals exactly 45. If cages covering a box add up to 43 and one cell of the box belongs to a cage poking outside, arithmetic hands you that cell's relationship on a plate. This deserves its own page &mdash; see <a href="killer-sudoku-strategy.html">the rule of 45</a>.</p>
+
+<h2>Pencil marks: not optional</h2>
+<p>In regular sudoku, strong players can hold candidates in their head. In killer sudoku, even experts pencil-mark, because cage combinations create candidate lists that shift as sums resolve. On Zaney Sudoku, tap the &#9999;&#65039; Notes button (or press N) &mdash; and when you place a digit, your notes in that row, column, box and cage tidy themselves automatically.</p>
+
+<h2>Five beginner mistakes to avoid</h2>
+<ul>
+<li><b>Forgetting the no-repeat rule</b> in cages that span two boxes. The cage looks legal by row and column but repeats a digit inside itself.</li>
+<li><b>Only checking a cage when it's full.</b> A partially filled cage already constrains its remaining cells: if a 3-cell cage summing 12 contains a 7, the other two cells total 5 &mdash; so 1+4 or 2+3.</li>
+<li><b>Ignoring what a sum excludes.</b> A 2-cell cage summing 5 will never contain a digit above 4. Exclusions are eliminations.</li>
+<li><b>Guessing.</b> Every puzzle on this site is verified to have exactly one solution reachable by logic. If you're guessing, there's a deduction you haven't spotted &mdash; usually a 45 trick.</li>
+<li><b>Starting with the big cages.</b> A 5-cell cage summing 26 has too many possibilities to be useful early. Work the extremes first, and the big cages collapse on their own.</li>
+</ul>
+
+<h2>Which difficulty should you start on?</h2>
+<p><b>Easy</b> puzzles here use small cages and reveal a few starting digits &mdash; ideal for your first dozen games. <b>Medium</b> removes the training wheels. <b>Hard</b> and <b>Expert</b> use larger, more ambiguous cages where the rule of 45 and combination analysis do the heavy lifting.</p>
+
+<a class="cta" href="index.html#/p/easy/1">Start with Easy #1 &rarr;</a>
+
+</article>
+</main>
+<footer>
+  Zaney Sudoku &middot; <a href="index.html#/daily">daily puzzle</a> &middot;
+  <a href="killer-sudoku-rules.html">rules</a> &middot;
+  <a href="killer-sudoku-combinations.html">combinations</a> &middot;
+  <a href="killer-sudoku-strategy.html">strategy</a> &middot;
+  <a href="about.html">about</a> &middot;
+  <a href="terms.html">terms</a> &middot;
+  <a href="privacy.html">privacy</a>
+</footer>
+<script>
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme==="dark"?"light":"dark";
+  document.documentElement.dataset.theme=cur;
+  try{localStorage.setItem("zs_theme",JSON.stringify(cur));}catch(e){}
+});
+</script>
+</body>
+</html>

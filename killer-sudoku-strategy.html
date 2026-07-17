@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Killer Sudoku Strategy — Rule of 45, Innies & Outies | Zaney Sudoku</title>
+<meta name="description" content="Master the rule of 45, innies and outies, split 45s and combination cross-referencing. The complete killer sudoku strategy guide for Medium to Expert players.">
+<meta name="theme-color" content="#F6F5EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12141C" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="canonical" href="https://zaneysudoku.com/killer-sudoku-strategy.html">
+<meta property="og:title" content="Killer Sudoku Strategy — Rule of 45, Innies & Outies | Zaney Sudoku">
+<meta property="og:description" content="Master the rule of 45, innies and outies, split 45s and combination cross-referencing. The complete killer sudoku strategy guide for Medium to Expert players.">
+<meta property="og:url" content="https://zaneysudoku.com/killer-sudoku-strategy.html">
+<meta property="og:site_name" content="Zaney Sudoku">
+<meta property="og:image" content="https://zaneysudoku.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Zaney Sudoku — killer sudoku with zero dead ends">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="48x48" href="icon-48.png">
+<!-- Google AdSense Auto ads: after approval, uncomment and set your publisher ID.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+<script>try{const t=localStorage.getItem("zs_theme");if(t)document.documentElement.dataset.theme=JSON.parse(t);else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("fonts/bricolage.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url("fonts/inter.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{--paper:#F6F5EF;--surface:#FFFFFF;--ink:#20232E;--muted:#6B6F7F;--line:#DBD9CE;
+--violet:#5847E0;--hl:#FFD23F;--radius:14px;
+--shadow:0 1px 2px rgba(20,22,32,.06),0 8px 24px rgba(20,22,32,.06);}
+[data-theme="dark"]{--paper:#12141C;--surface:#1B1E2A;--ink:#ECEDF3;--muted:#9BA0B2;
+--line:#2C303F;--violet:#8B7DFF;--hl:#FFD23F;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--paper);
+color:var(--ink);line-height:1.6;min-height:100dvh;display:flex;flex-direction:column}
+a{color:var(--violet)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+button,a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px clamp(14px,4vw,32px) 10px;
+max-width:900px;margin:0 auto;width:100%}
+.mark{position:relative;display:inline-block;border:2.5px dashed var(--ink);border-radius:12px;
+padding:7px 16px 8px;font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(18px,4vw,24px);letter-spacing:.5px;line-height:1;text-decoration:none;color:var(--ink)}
+.mark em{font-style:normal;color:var(--violet)}
+.mark .sum{position:absolute;top:-11px;left:12px;background:var(--hl);color:#20232E;
+font-family:Inter;font-size:12px;font-weight:700;padding:1px 7px;border-radius:7px}
+nav{margin-left:auto;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);font-weight:600;font-size:13.5px;padding:7px 11px;border-radius:10px}
+nav a:hover{color:var(--violet)}
+#themeBtn{font-size:17px;padding:6px 10px;border-radius:10px}
+main{flex:1;width:100%;max-width:720px;margin:0 auto;padding:14px clamp(16px,4vw,32px) 50px}
+article h1{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:800;
+font-size:clamp(27px,5.6vw,38px);line-height:1.1;margin:18px 0 6px}
+.lede{font-size:16.5px;color:var(--muted);margin-bottom:22px}
+article h2{font-family:"Bricolage Grotesque",Inter,sans-serif;font-weight:700;font-size:22px;margin:32px 0 10px}
+article h3{font-weight:700;font-size:16.5px;margin:22px 0 6px}
+article p,article li{font-size:15.5px}
+article ul,article ol{padding-left:22px;display:grid;gap:7px;margin:8px 0}
+.tip{background:var(--surface);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;margin:14px 0;font-size:14.5px}
+.tip b{color:var(--violet)}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:var(--surface);
+border-radius:10px;overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+@media (max-width:420px){table{font-size:12.5px}th,td{padding:7px 8px}}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td.u{font-weight:700;color:var(--violet)}
+.combo{white-space:nowrap}
+.cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+font-weight:700;padding:12px 22px;border-radius:99px;margin:26px 0 6px}
+.cta:hover{background:var(--violet)}
+.crumbs{font-size:13px;color:var(--muted);margin-top:8px}
+.crumbs a{color:var(--muted)}
+footer{padding:26px 20px calc(34px + env(safe-area-inset-bottom));text-align:center;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  header,footer,.cta,.crumbs,#themeBtn,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  table{box-shadow:none;border:1px solid #999}
+  th,td{border-bottom:1px solid #ccc}
+  article h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="index.html">ZANEY <em>SUDOKU</em><span class="sum">45</span></a>
+  <nav>
+    <a href="index.html#/daily">Play</a>
+    <a href="killer-sudoku-rules.html">Rules</a>
+    <a href="killer-sudoku-combinations.html">Combinations</a>
+    <a href="killer-sudoku-strategy.html">Strategy</a>
+    <button id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">&#9680;</button>
+  </nav>
+</header>
+<main>
+<article>
+
+<div class="crumbs"><a href="index.html#/daily">Zaney Sudoku</a> / Strategy</div>
+<h1>Killer sudoku strategy: the rule of 45 and beyond</h1>
+<p class="lede">The techniques that carry you from Medium to Expert &mdash; innies, outies, split 45s, and combination cross-referencing. No guessing required, ever.</p>
+
+<h2>The rule of 45</h2>
+<p>The digits 1&ndash;9 add up to 45. That means <b>every row, every column and every 3&times;3 box sums to exactly 45</b> &mdash; and because cage sums are printed on the grid, you can do arithmetic on whole regions before placing a single digit.</p>
+
+<h3>Innies: one cell in</h3>
+<p>Look at a 3&times;3 box. Suppose four cages fit entirely inside it and total 39, and the box's one remaining cell belongs to a cage that extends outside. That leftover cell is an <b>innie</b> &mdash; and it must be 45 &minus; 39 = <b>6</b>. You've placed a digit without touching a single combination table.</p>
+
+<h3>Outies: one cell out</h3>
+<p>Now the reverse. Suppose cages covering a box total 48, with exactly one cell of one cage sticking outside the box. Everything inside sums to 45, so the poking-out cell &mdash; the <b>outie</b> &mdash; must be 48 &minus; 45 = <b>3</b>.</p>
+
+<h3>Stretch it across multiple regions</h3>
+<p>Nothing limits you to one box. Two adjacent columns sum to 90; the whole top band of three boxes sums to 135. Scanning bands and stacks for near-complete cage coverage regularly yields an innie or outie the single-box scan misses. On Expert puzzles this is often the opening move.</p>
+
+<div class="tip"><b>Habit to build:</b> before placing anything, walk all nine boxes, then the three bands and three stacks, doing quick cage arithmetic. Thirty seconds of adding usually produces one or two placed digits &mdash; a massive head start.</div>
+
+<h2>Split 45s: innies and outies in pairs</h2>
+<p>When a region has <em>two</em> innie cells, you don't get a digit &mdash; you get their sum. If cages inside a column total 38 and two cells belong to outside cages, those two cells sum to 7. Now treat them like a phantom 2-cell cage: 1+6, 2+5 or 3+4. Cross-reference against the column's other constraints and it often collapses to one option.</p>
+
+<h2>Combination cross-referencing</h2>
+<p>This is the engine of mid-game solving. Take every cage's <a href="killer-sudoku-combinations.html">possible combinations</a> and intersect them with sudoku constraints:</p>
+<ul>
+<li><b>Shared-unit collisions.</b> Two 2-cell cages in the same row, one summing 16 (7+9) and one summing 17 (8+9): both need a 9, but the row only has one. Something must give &mdash; and since 16 and 17 have no alternatives, those cages cannot both sit fully in that row's cells that remain; whichever arrangement avoids two 9s in the row is forced.</li>
+<li><b>Cage-driven naked pairs.</b> A 2-cell cage summing 4 (1+3 only) inside a box means no other cell in that box can be 1 or 3. That's a naked pair you got for free from a sum.</li>
+<li><b>Remainder analysis.</b> A 4-cell cage summing 20 containing a placed 9 becomes a 3-cell problem summing 11 &mdash; jump back to the tables with the smaller cage.</li>
+</ul>
+
+<h2>The 45 rule, weaponised: overlapping regions</h2>
+<p>Advanced puzzles yield to arithmetic on overlapping regions. If a cage lies half in box 1 and half in box 2, then (box 1 total) + (that cage's outside half) = 45 + (something computable). Setting up two equations across neighbouring regions and subtracting them cancels the unknowns you don't care about, leaving the cell you do. It feels like algebra because it is &mdash; two minutes of it beats twenty minutes of staring.</p>
+
+<h2>When you're truly stuck</h2>
+<ul>
+<li><b>Re-run the 45 scan.</b> Placements change cage remainders; a band that gave nothing earlier may give an innie now.</li>
+<li><b>Check your smallest cages' remainders.</b> Partially filled cages become forced far earlier than empty ones.</li>
+<li><b>Trust the puzzle.</b> Every puzzle on Zaney Sudoku is verified to have exactly one solution before it's dealt &mdash; there is always a logical next step. Guessing is never required, which means being stuck is information: it tells you a technique on this page applies somewhere you haven't looked.</li>
+</ul>
+
+<a class="cta" href="index.html#/browse">Test it on a Hard puzzle &rarr;</a>
+
+</article>
+</main>
+<footer>
+  Zaney Sudoku &middot; <a href="index.html#/daily">daily puzzle</a> &middot;
+  <a href="killer-sudoku-rules.html">rules</a> &middot;
+  <a href="killer-sudoku-combinations.html">combinations</a> &middot;
+  <a href="killer-sudoku-strategy.html">strategy</a> &middot;
+  <a href="about.html">about</a> &middot;
+  <a href="terms.html">terms</a> &middot;
+  <a href="privacy.html">privacy</a>
+</footer>
+<script>
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme==="dark"?"light":"dark";
+  document.documentElement.dataset.theme=cur;
+  try{localStorage.setItem("zs_theme",JSON.stringify(cur));}catch(e){}
+});
+</script>
+</body>
+</html>
